@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+<%- include('../partials/nav') %>
+
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image--><img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="">
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading mb-0"><%= pageTitle %></h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+    </div>
+</header>
+
+<div class="row justify-content-center py-4">
+    <div class="col-auto">
+        <form id="login" name="<%= formName %>" action="<%= formAction %>" method="post">
+            <% if (formName === 'signUpForm'){ %>
+            <div class="mb-2">
+                <label class="d-block" for="username">Username:</label>
+                <input name="username" id="username" type="text" />
+            </div>
+            <%}%>
+            <div class="mb-3">
+                <label class="d-block">Email:</label>
+                <input id="email" type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="אנא הזן כתובת מייל תקינה" required
+                >
+            </div>
+            
+            <!-- <div class="mb-4">
+                <label class="d-block" for="password">Password:</label>
+                <input id="inputPassword" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}" title="הסיסמא חייב להכיל לפחות אות קטנה אחת, אות גדולה אחת ומספר אחד. 6-12 תווים" required />
+            </div> -->
+
+            <input type="submit" value="<%= submitValue %>">
+        </form>
+        <% if (formName === 'signUpForm'){ %>
+        <a href="/signin" class="mt-4 d-block">sign in</a>
+        <%}%>
+    </div>
+</div>
+
+
+ <%- include('../partials/footer') %>
