@@ -1,348 +1,624 @@
-<%- include('../partials/header');%>
-<%- include('../partials/nav');%>
-<header class="masthead bg-primary text-white text-center">
-    <IFRAME src="https://www.yeshiva.org.il/calendar/YeshivaTimes.aspx?bgcolor=EFEFEF" width=154 height=270 SCROLLING=no frameborder=0></IFRAME>
+<%- include('../partials/head');%>
+
+<body id="home">
+    <%- include('../partials/nav');%>
+    <%- include('../partials/header') %>
+    <%- include('../partials/aside') %>
+
+
+
     <div class="container d-flex align-items-center flex-column">
-        <!-- Masthead Avatar Image--><img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="">
-        <!-- Masthead Heading-->
-        <h1 class="masthead-heading mb-0"><%= title%></h1>
-        <!-- Icon Divider-->
-        <div class="divider-custom divider-light">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-        <!-- Masthead Subheading-->
-        <p>-
+        <h1><%=title%></h1>
+        <form id="sercheHome" class="serchehome rounded" method="get" action="/home-page/search">
+            <div class="form-group ">
+                <h2> search</h2>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="state">State</label>
+                    <select id="state" class="form-control " data-live-search="true" data-flag="true">
+                        <option value="">Choose...</option>
+                        <option value="AF">Afghanistan</option>
+                        <option value="AX"><img>Åland Islands</option>
+                        <option value="AL"><img>Albania</option>
+                        <option value="DZ"><img>Algeria</option>
+                        <option value="AS"><img>American Samoa</option>
+                        <option value="AD"><img>Andorra</option>
+                        <option value="AO"><img>Angola</option>
+                        <option value="AI"><img>Anguilla</option>
+                        <option value="AQ"><img>Antarctica</option>
+                        <option value="AG"><img>Antigua and Barbuda</option>
+                        <option value="AR"><img>Argentina</option>
+                        <option value="AM"><img>Armenia</option>
+                        <option value="AW"><img>Aruba</option>
+                        <option value="AU"><img>Australia</option>
+                        <option value="AT"><img>Austria</option>
+                        <option value="AZ"><img>Azerbaijan</option>
+                        <option value="BS"><img>Bahamas</option>
+                        <option value="BH"><img>Bahrain</option>
+                        <option value="BD"><img>Bangladesh</option>
+                        <option value="BB"><img>Barbados</option>
+                        <option value="BY"><img>Belarus</option>
+                        <option value="BE"><img>Belgium</option>
+                        <option value="BZ"><img>Belize</option>
+                        <option value="BJ"><img>Benin</option>
+                        <option value="BM"><img>Bermuda</option>
+                        <option value="BT"><img>Bhutan</option>
+                        <option value="BO"><img>Bolivia, Plurinational State of</option>
+                        <option value="BQ"><img>Bonaire, Sint Eustatius and Saba</option>
+                        <option value="BA"><img>Bosnia and Herzegovina</option>
+                        <option value="BW"><img>Botswana</option>
+                        <option value="BV"><img>Bouvet Island</option>
+                        <option value="BR"><img>Brazil</option>
+                        <option value="IO"><img>British Indian Ocean Territory</option>
+                        <option value="BN"><img>Brunei Darussalam</option>
+                        <option value="BG"><img>Bulgaria</option>
+                        <option value="BF"><img>Burkina Faso</option>
+                        <option value="BI"><img>Burundi</option>
+                        <option value="KH"><img>Cambodia</option>
+                        <option value="CM"><img>Cameroon</option>
+                        <option value="CA"><img>Canada</option>
+                        <option value="CV"><img>Cape Verde</option>
+                        <option value="KY"><img>Cayman Islands</option>
+                        <option value="CF"><img>Central African Republic</option>
+                        <option value="TD"><img>Chad</option>
+                        <option value="CL"><img>Chile</option>
+                        <option value="CN"><img>China</option>
+                        <option value="CX"><img>Christmas Island</option>
+                        <option value="CC"><img>Cocos (Keeling) Islands</option>
+                        <option value="CO"><img>Colombia</option>
+                        <option value="KM"><img>Comoros</option>
+                        <option value="CG"><img>Congo</option>
+                        <option value="CD"><img>Congo, the Democratic Republic of the</option>
+                        <option value="CK"><img>Cook Islands</option>
+                        <option value="CR"><img>Costa Rica</option>
+                        <option value="CI"><img>Côte d'Ivoire</option>
+                        <option value="HR"><img>Croatia</option>
+                        <option value="CU"><img>Cuba</option>
+                        <option value="CW"><img>Curaçao</option>
+                        <option value="CY"><img>Cyprus</option>
+                        <option value="CZ"><img>Czech Republic</option>
+                        <option value="DK"><img>Denmark</option>
+                        <option value="DJ"><img>Djibouti</option>
+                        <option value="DM"><img>Dominica</option>
+                        <option value="DO"><img>Dominican Republic</option>
+                        <option value="EC"><img>Ecuador</option>
+                        <option value="EG"><img>Egypt</option>
+                        <option value="SV"><img>El Salvador</option>
+                        <option value="GQ"><img>Equatorial Guinea</option>
+                        <option value="ER"><img>Eritrea</option>
+                        <option value="EE"><img>Estonia</option>
+                        <option value="ET"><img>Ethiopia</option>
+                        <option value="FK"><img>Falkland Islands (Malvinas)</option>
+                        <option value="FO"><img>Faroe Islands</option>
+                        <option value="FJ"><img>Fiji</option>
+                        <option value="FI"><img>Finland</option>
+                        <option value="FR"><img>France</option>
+                        <option value="GF"><img>French Guiana</option>
+                        <option value="PF"><img>French Polynesia</option>
+                        <option value="TF"><img>French Southern Territories</option>
+                        <option value="GA"><img>Gabon</option>
+                        <option value="GM"><img>Gambia</option>
+                        <option value="GE"><img>Georgia</option>
+                        <option value="DE"><img>Germany</option>
+                        <option value="GH"><img>Ghana</option>
+                        <option value="GI"><img>Gibraltar</option>
+                        <option value="GR"><img>Greece</option>
+                        <option value="GL"><img>Greenland</option>
+                        <option value="GD"><img>Grenada</option>
+                        <option value="GP"><img>Guadeloupe</option>
+                        <option value="GU"><img>Guam</option>
+                        <option value="GT"><img>Guatemala</option>
+                        <option value="GG"><img>Guernsey</option>
+                        <option value="GN"><img>Guinea</option>
+                        <option value="GW"><img>Guinea-Bissau</option>
+                        <option value="GY"><img>Guyana</option>
+                        <option value="HT"><img>Haiti</option>
+                        <option value="HM"><img>Heard Island and McDonald Islands</option>
+                        <option value="VA"><img>Holy See (Vatican City State)</option>
+                        <option value="HN"><img>Honduras</option>
+                        <option value="HK"><img>Hong Kong</option>
+                        <option value="HU"><img>Hungary</option>
+                        <option value="IS"><img>Iceland</option>
+                        <option value="IN"><img>India</option>
+                        <option value="ID"><img>Indonesia</option>
+                        <option value="IR"><img>Iran, Islamic Republic of</option>
+                        <option value="IQ"><img>Iraq</option>
+                        <option value="IE"><img>Ireland</option>
+                        <option value="IM"><img>Isle of Man</option>
+                        <option value="IL"><img>Israel</option>
+                        <option value="IT"><img>Italy</option>
+                        <option value="JM"><img>Jamaica</option>
+                        <option value="JP"><img>Japan</option>
+                        <option value="JE"><img>Jersey</option>
+                        <option value="JO"><img>Jordan</option>
+                        <option value="KZ"><img>Kazakhstan</option>
+                        <option value="KE"><img>Kenya</option>
+                        <option value="KI"><img>Kiribati</option>
+                        <option value="KP"><img>Korea, Democratic People's Republic of</option>
+                        <option value="KR"><img>Korea, Republic of</option>
+                        <option value="KW"><img>Kuwait</option>
+                        <option value="KG"><img>Kyrgyzstan</option>
+                        <option value="LA"><img>Lao People's Democratic Republic</option>
+                        <option value="LV"><img>Latvia</option>
+                        <option value="LB"><img>Lebanon</option>
+                        <option value="LS"><img>Lesotho</option>
+                        <option value="LR"><img>Liberia</option>
+                        <option value="LY"><img>Libya</option>
+                        <option value="LI"><img>Liechtenstein</option>
+                        <option value="LT"><img>Lithuania</option>
+                        <option value="LU"><img>Luxembourg</option>
+                        <option value="MO"><img>Macao</option>
+                        <option value="MK"><img>Macedonia, the former Yugoslav Republic of</option>
+                        <option value="MG"><img>Madagascar</option>
+                        <option value="MW"><img>Malawi</option>
+                        <option value="MY"><img>Malaysia</option>
+                        <option value="MV"><img>Maldives</option>
+                        <option value="ML"><img>Mali</option>
+                        <option value="MT"><img>Malta</option>
+                        <option value="MH"><img>Marshall Islands</option>
+                        <option value="MQ"><img>Martinique</option>
+                        <option value="MR"><img>Mauritania</option>
+                        <option value="MU"><img>Mauritius</option>
+                        <option value="YT"><img>Mayotte</option>
+                        <option value="MX"><img>Mexico</option>
+                        <option value="FM"><img>Micronesia, Federated States of</option>
+                        <option value="MD"><img>Moldova, Republic of</option>
+                        <option value="MC"><img>Monaco</option>
+                        <option value="MN"><img>Mongolia</option>
+                        <option value="ME"><img>Montenegro</option>
+                        <option value="MS"><img>Montserrat</option>
+                        <option value="MA"><img>Morocco</option>
+                        <option value="MZ"><img>Mozambique</option>
+                        <option value="MM"><img>Myanmar</option>
+                        <option value="NA"><img>Namibia</option>
+                        <option value="NR"><img>Nauru</option>
+                        <option value="NP"><img>Nepal</option>
+                        <option value="NL"><img>Netherlands</option>
+                        <option value="NC"><img>New Caledonia</option>
+                        <option value="NZ"><img>New Zealand</option>
+                        <option value="NI"><img>Nicaragua</option>
+                        <option value="NE"><img>Niger</option>
+                        <option value="NG"><img>Nigeria</option>
+                        <option value="NU"><img>Niue</option>
+                        <option value="NF"><img>Norfolk Island</option>
+                        <option value="MP"><img>Northern Mariana Islands</option>
+                        <option value="NO"><img>Norway</option>
+                        <option value="OM"><img>Oman</option>
+                        <option value="PK"><img>Pakistan</option>
+                        <option value="PW"><img>Palau</option>
+                        <option value="PS"><img>Palestinian Territory, Occupied</option>
+                        <option value="PA"><img>Panama</option>
+                        <option value="PG"><img>Papua New Guinea</option>
+                        <option value="PY"><img>Paraguay</option>
+                        <option value="PE"><img>Peru</option>
+                        <option value="PH"><img>Philippines</option>
+                        <option value="PN"><img>Pitcairn</option>
+                        <option value="PL"><img>Poland</option>
+                        <option value="PT"><img>Portugal</option>
+                        <option value="PR"><img>Puerto Rico</option>
+                        <option value="QA"><img>Qatar</option>
+                        <option value="RE"><img>Réunion</option>
+                        <option value="RO"><img>Romania</option>
+                        <option value="RU"><img>Russian Federation</option>
+                        <option value="RW"><img>Rwanda</option>
+                        <option value="BL"><img>Saint Barthélemy</option>
+                        <option value="SH"><img>Saint Helena, Ascension and Tristan da Cunha</option>
+                        <option value="KN"><img>Saint Kitts and Nevis</option>
+                        <option value="LC"><img>Saint Lucia</option>
+                        <option value="MF"><img>Saint Martin (French part)</option>
+                        <option value="PM"><img>Saint Pierre and Miquelon</option>
+                        <option value="VC"><img>Saint Vincent and the Grenadines</option>
+                        <option value="WS"><img>Samoa</option>
+                        <option value="SM"><img>San Marino</option>
+                        <option value="ST"><img>Sao Tome and Principe</option>
+                        <option value="SA"><img>Saudi Arabia</option>
+                        <option value="SN"><img>Senegal</option>
+                        <option value="RS"><img>Serbia</option>
+                        <option value="SC"><img>Seychelles</option>
+                        <option value="SL"><img>Sierra Leone</option>
+                        <option value="SG"><img>Singapore</option>
+                        <option value="SX"><img>Sint Maarten (Dutch part)</option>
+                        <option value="SK"><img>Slovakia</option>
+                        <option value="SI"><img>Slovenia</option>
+                        <option value="SB"><img>Solomon Islands</option>
+                        <option value="SO"><img>Somalia</option>
+                        <option value="ZA"><img>South Africa</option>
+                        <option value="GS"><img>South Georgia and the South Sandwich Islands</option>
+                        <option value="SS"><img>South Sudan</option>
+                        <option value="ES"><img>Spain</option>
+                        <option value="LK"><img>Sri Lanka</option>
+                        <option value="SD"><img>Sudan</option>
+                        <option value="SR"><img>Suriname</option>
+                        <option value="SJ"><img>Svalbard and Jan Mayen</option>
+                        <option value="SZ"><img>Swaziland</option>
+                        <option value="SE"><img>Sweden</option>
+                        <option value="CH"><img>Switzerland</option>
+                        <option value="SY"><img>Syrian Arab Republic</option>
+                        <option value="TW"><img>Taiwan, Province of China</option>
+                        <option value="TJ"><img>Tajikistan</option>
+                        <option value="TZ"><img>Tanzania, United Republic of</option>
+                        <option value="TH"><img>Thailand</option>
+                        <option value="TL"><img>Timor-Leste</option>
+                        <option value="TG"><img>Togo</option>
+                        <option value="TK"><img>Tokelau</option>
+                        <option value="TO"><img>Tonga</option>
+                        <option value="TT"><img>Trinidad and Tobago</option>
+                        <option value="TN"><img>Tunisia</option>
+                        <option value="TR"><img>Turkey</option>
+                        <option value="TM"><img>Turkmenistan</option>
+                        <option value="TC"><img>Turks and Caicos Islands</option>
+                        <option value="TV"><img>Tuvalu</option>
+                        <option value="UG"><img>Uganda</option>
+                        <option value="UA"><img>Ukraine</option>
+                        <option value="AE"><img>United Arab Emirates</option>
+                        <option value="GB"><img>United Kingdom</option>
+                        <option value="US"><img>United States</option>
+                        <option value="UM"><img>United States Minor Outlying Islands</option>
+                        <option value="UY"><img>Uruguay</option>
+                        <option value="UZ"><img>Uzbekistan</option>
+                        <option value="VU"><img>Vanuatu</option>
+                        <option value="VE"><img>Venezuela, Bolivarian Republic of</option>
+                        <option value="VN"><img>Viet Nam</option>
+                        <option value="VG"><img>Virgin Islands, British</option>
+                        <option value="VI"><img>Virgin Islands, U.S.</option>
+                        <option value="WF"><img>Wallis and Futuna</option>
+                        <option value="EH"><img>Western Sahara</option>
+                        <option value="YE"><img>Yemen</option>
+                        <option value="ZM"><img>Zambia</option>
+                        <option value="ZW"><img>Zimbabwe</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city">
+                </div>
+            </div>
+            <div class="form-group">
+                <input id="hotel" type="search" name="" value="" class=" form-control"
+                    placeholder="search here your house" id="title">
+            </div>
+            <div class="form-row">
+                <!-- <div class="float-laft checkbox_div"> -->
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="door" <%= door%>>
+                    <label for="" class=" form-check-label">כניסה במפתח וללא כרטיס</label>
+                </div>
 
-            <% for(let i in content){%>
-            <span><%= content[i]%> - </span>
-            <%}%>
-            
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="lights" <%= lights%>>
+                    <label for="" class=" form-check-label">ללא אורות שנדלקים ע"י חיישנים</label>
+                </div>
 
-        </p>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="air-conditioner" <%= air%>>
+                    <label for="" class="form-check-label">מזגן נשלט</label>
+                </div>
+
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="freezer" <%= freezer%>>
+                    <label for="" class="form-check-label">מקרר פרטי בחדר</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="chabad" <%= chabad%>>
+                    <label for="" class="form-check-label"> קרוב לבית חב"ד / בית כנסת פעיל</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="foodKosher" <%= foodKosher%>>
+                    <label for="" class="form-check-label"> אוכל כשר</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="airuve" <%= airuve%>>
+                    <label for="" class="form-check-label"> עירוב</label>
+                </div>
+                <div class="form-group">
+                    <select id="star" class="selectpicker">
+                        <option value="" data-content=" <i class='fas fa-star'><% if (star){ %>
+                            <%= star%> <% } %>star</i>"> </option>
+
+                        <option value="2" data-content="<i class='fas fa-star'>2</i>"></option>
+                        <option value="3" data-content="<i class='fas fa-star'>3</i>"></option>
+                        <option value="4" data-content="<i class='fas fa-star'>4</i>"></option>
+                        <option value="5" data-content="<i class='fas fa-star'>5</i>"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select class="selectpicker" id="rating">
+                        <option value="">rating</option>
+                        <option value="6" data-content="<i class='fas fa-heart'>6+</i>"></option>
+                        <option value='7' data-content="<i class='far fa-heart'>7+</i>"></option>
+                        <option value='8' data-content="<i class='far fa-heart'>8+</i>"></option>
+                        <option value='9' data-content="<i class='far fa-heart'>9+</i>"></option>
+                    </select>
+                </div>
+
+            </div>
+
+            <input type="submit" class="btn btn-primary col-md-6" value="submit">
+
+        </form>
+
     </div>
-</header>
-<section class="page-section portfolio" id="portfolio">
-    <div class="container">
-        <!-- Portfolio Section Heading-->
-        <div class="text-center">
-            <h2 class="page-section-heading text-secondary mb-0 d-inline-block">PORTFOLIO</h2>
-        </div>
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-        <!-- Portfolio Grid Items-->
-        <div class="row justify-content-center">
-            <!-- Portfolio Items-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal0">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i
-                                class="fas fa-plus fa-3x"></i></div>
-                    </div><img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="Log Cabin" />
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i
-                                class="fas fa-plus fa-3x"></i></div>
-                    </div><img class="img-fluid" src="assets/img/portfolio/cake.png" alt="Tasty Cake" />
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i
-                                class="fas fa-plus fa-3x"></i></div>
-                    </div><img class="img-fluid" src="assets/img/portfolio/circus.png" alt="Circus Tent" />
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i
-                                class="fas fa-plus fa-3x"></i></div>
-                    </div><img class="img-fluid" src="assets/img/portfolio/game.png" alt="Controller" />
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i
-                                class="fas fa-plus fa-3x"></i></div>
-                    </div><img class="img-fluid" src="assets/img/portfolio/safe.png" alt="Locked Safe" />
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal5">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i
-                                class="fas fa-plus fa-3x"></i></div>
-                    </div><img class="img-fluid" src="assets/img/portfolio/submarine.png" alt="Submarine" />
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Portfolio Modal-->
-<div class="portfolio-modal modal fade" id="portfolioModal0" tabindex="-1" role="dialog"
-    aria-labelledby="#portfolioModal0Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
-                        class="fas fa-times"></i></span></button>
-            <div class="modal-body text-center">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary mb-0">Log Cabin</h2>
-                            <!-- Icon Divider-->
-                            <div class="divider-custom">
-                                <div class="divider-custom-line"></div>
-                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                <div class="divider-custom-line"></div>
+    </header>
+    <!-- <ins class="bookingaff" data-aid="2041855" data-target_aid="2041855" data-prod="nsb" data-width="100%"
+data-height="auto" data-lang="en" data-df_num_properties="3">
+Anything inside will go away once widget is loaded. -->
+    <!--   <a href="//www.booking.com?aid=2041855">Booking.com</a>
+</ins> -->
+    <!-- <script type="text/javascript">
+(function (d, sc, u) {
+    var s = d.createElement(sc),
+        p = d.getElementsByTagName(sc)[0];
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = u + '?v=' + (+new Date());
+    p.parentNode.insertBefore(s, p);
+})(document, 'script', '//aff.bstatic.com/static/affiliate_base/js/flexiproduct.js');
+</script> -->
+<!-- <section class="page-section portfolio bg-primary text-white mb-0">
+    <div class="container text-center"> -->
+        <h3 class="container text-center">
+            נמצאו  <span><%= content.length%></span> תוצאות 
+        </h3>
+    <!-- </div>
+</section> -->
+
+    <section class="page-section portfolio bg-primary text-white mb-0">
+        <div class="album py-5 ">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <%for (let i in content){%>
+                    <div id="aaa" class="col-md-8 rounded">
+                        <div>
+                            <figure class="col-md-5 float-right ">
+                                <img class="rounded" src="<%=content[i].img[0].link%>" alt="<%=content[i].img[0].title%>" width=" 100%" height="100%" alt="">
+                            </figure>
+                            <div>
+                                <h2 class=""><%=content[i].title%><span><br>
+                                        <h5 class="float-right d-block mr-5"><%=content[i].text %></h5>
+                                        <h5 class="float-laft"><%=content[i].city%></h5>
+                                    </span></h2>
+
+                                <h7>guest: 
+                                    <% if(content[i].guest > 2) { %>
+                                        <i class="fas fa-male"></i><i class="fas fa-male"></i>  -  <i class="fas fa-male"></i> x <%=content[i].guest%>
+                                    <%}%>
+                                    <% if(content[i].guest == 2) { %>
+                                        <i class="fas fa-male"></i><i class="fas fa-male"></i>
+                                        <%}%>
+                                </h7>
+                                
+                                <h7>Customer Rating:
+                                    <% for (let x = 0; x < content[i].star; x++){ %>
+                                    <i class="fas fa-star"></i>
+                                    <% }%>
+                                </h7>
+
+                                <div> <a class="btn btn-primary " href="/home-page/<%= content[i]._id%>">תגובות</a>
+                                    <a class="btn btn-primary " href="<%= content[i].link%>" target="_blank">עבור לעמוד</a>
+                                   
+                                </div>
                             </div>
-                            <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5"
-                                src="assets/img/portfolio/cabin.png" alt="Log Cabin" />
-                            <!-- Portfolio Modal - Text-->
-                            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque
-                                assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit
-                                asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                            <button class="btn btn-primary" href="#" data-dismiss="modal"><i
-                                    class="fas fa-times fa-fw"></i>Close Window</button>
+                        </div>
+                    </div>
+                    <%}%> 
+                </div>
+               
+            </div>
+        </div>
+    </section>
+
+
+  
+<i class="far fa-thumbs-up"></i>לייק
+
+<i class="fas fa-thumbs-up"></i>
+<i class="fas fa-star"></i>כוכב מלא
+<i class="far fa-star"></i>כוכב ריק
+<i class="fas fa-star-half-alt"></i>חצי כוכב
+<i class="far fa-thumbs-down"></i>לא אהבתי ריק
+<i class="fas fa-thumbs-down"></i>לא אהבתי מלא
+
+
+
+  
+  
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog"
+        aria-labelledby="#portfolioModal2Label" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
+                            class="fas fa-times"></i></span></button>
+                <div class="modal-body text-center">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <!-- Portfolio Modal - Title-->
+                                <h2 class="portfolio-modal-title text-secondary mb-0">Circus Tent</h2>
+                                <!-- Icon Divider-->
+                                <div class="divider-custom">
+                                    <div class="divider-custom-line"></div>
+                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                    <div class="divider-custom-line"></div>
+                                </div>
+                                <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5"
+                                    src="assets/img/portfolio/circus.png" alt="Circus Tent" />
+                                <!-- Portfolio Modal - Text-->
+                                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque
+                                    assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam
+                                    velit
+                                    asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                                <button class="btn btn-primary" href="#" data-dismiss="modal"><i
+                                        class="fas fa-times fa-fw"></i>Close Window</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog"
-    aria-labelledby="#portfolioModal1Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
-                        class="fas fa-times"></i></span></button>
-            <div class="modal-body text-center">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary mb-0">Tasty Cake</h2>
-                            <!-- Icon Divider-->
-                            <div class="divider-custom">
-                                <div class="divider-custom-line"></div>
-                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                <div class="divider-custom-line"></div>
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog"
+        aria-labelledby="#portfolioModal3Label" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
+                            class="fas fa-times"></i></span></button>
+                <div class="modal-body text-center">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <!-- Portfolio Modal - Title-->
+                                <h2 class="portfolio-modal-title text-secondary mb-0">Controller</h2>
+                                <!-- Icon Divider-->
+                                <div class="divider-custom">
+                                    <div class="divider-custom-line"></div>
+                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                    <div class="divider-custom-line"></div>
+                                </div>
+                                <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5"
+                                    src="assets/img/portfolio/game.png" alt="Controller" />
+                                <!-- Portfolio Modal - Text-->
+                                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque
+                                    assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam
+                                    velit
+                                    asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                                <button class="btn btn-primary" href="#" data-dismiss="modal"><i
+                                        class="fas fa-times fa-fw"></i>Close Window</button>
                             </div>
-                            <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5"
-                                src="assets/img/portfolio/cake.png" alt="Tasty Cake" />
-                            <!-- Portfolio Modal - Text-->
-                            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque
-                                assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit
-                                asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                            <button class="btn btn-primary" href="#" data-dismiss="modal"><i
-                                    class="fas fa-times fa-fw"></i>Close Window</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog"
-    aria-labelledby="#portfolioModal2Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
-                        class="fas fa-times"></i></span></button>
-            <div class="modal-body text-center">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary mb-0">Circus Tent</h2>
-                            <!-- Icon Divider-->
-                            <div class="divider-custom">
-                                <div class="divider-custom-line"></div>
-                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                <div class="divider-custom-line"></div>
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog"
+        aria-labelledby="#portfolioModal4Label" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
+                            class="fas fa-times"></i></span></button>
+                <div class="modal-body text-center">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <!-- Portfolio Modal - Title-->
+                                <h2 class="portfolio-modal-title text-secondary mb-0">Locked Safe</h2>
+                                <!-- Icon Divider-->
+                                <div class="divider-custom">
+                                    <div class="divider-custom-line"></div>
+                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                    <div class="divider-custom-line"></div>
+                                </div>
+                                <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5"
+                                    src="assets/img/portfolio/safe.png" alt="Locked Safe" />
+                                <!-- Portfolio Modal - Text-->
+                                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque
+                                    assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam
+                                    velit
+                                    asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                                <button class="btn btn-primary" href="#" data-dismiss="modal"><i
+                                        class="fas fa-times fa-fw"></i>Close Window</button>
                             </div>
-                            <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5"
-                                src="assets/img/portfolio/circus.png" alt="Circus Tent" />
-                            <!-- Portfolio Modal - Text-->
-                            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque
-                                assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit
-                                asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                            <button class="btn btn-primary" href="#" data-dismiss="modal"><i
-                                    class="fas fa-times fa-fw"></i>Close Window</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog"
-    aria-labelledby="#portfolioModal3Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
-                        class="fas fa-times"></i></span></button>
-            <div class="modal-body text-center">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary mb-0">Controller</h2>
-                            <!-- Icon Divider-->
-                            <div class="divider-custom">
-                                <div class="divider-custom-line"></div>
-                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                <div class="divider-custom-line"></div>
+    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog"
+        aria-labelledby="#portfolioModal5Label" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
+                            class="fas fa-times"></i></span></button>
+                <div class="modal-body text-center">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <!-- Portfolio Modal - Title-->
+                                <h2 class="portfolio-modal-title text-secondary mb-0">Submarine</h2>
+                                <!-- Icon Divider-->
+                                <div class="divider-custom">
+                                    <div class="divider-custom-line"></div>
+                                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                    <div class="divider-custom-line"></div>
+                                </div>
+                                <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5"
+                                    src="assets/img/portfolio/submarine.png" alt="Submarine" />
+                                <!-- Portfolio Modal - Text-->
+                                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque
+                                    assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam
+                                    velit
+                                    asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                                <button class="btn btn-primary" href="#" data-dismiss="modal"><i
+                                        class="fas fa-times fa-fw"></i>Close Window</button>
                             </div>
-                            <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5"
-                                src="assets/img/portfolio/game.png" alt="Controller" />
-                            <!-- Portfolio Modal - Text-->
-                            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque
-                                assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit
-                                asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                            <button class="btn btn-primary" href="#" data-dismiss="modal"><i
-                                    class="fas fa-times fa-fw"></i>Close Window</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog"
-    aria-labelledby="#portfolioModal4Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
-                        class="fas fa-times"></i></span></button>
-            <div class="modal-body text-center">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary mb-0">Locked Safe</h2>
-                            <!-- Icon Divider-->
-                            <div class="divider-custom">
-                                <div class="divider-custom-line"></div>
-                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                <div class="divider-custom-line"></div>
-                            </div>
-                            <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5"
-                                src="assets/img/portfolio/safe.png" alt="Locked Safe" />
-                            <!-- Portfolio Modal - Text-->
-                            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque
-                                assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit
-                                asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                            <button class="btn btn-primary" href="#" data-dismiss="modal"><i
-                                    class="fas fa-times fa-fw"></i>Close Window</button>
-                        </div>
+    <section class="page-section bg-primary text-white mb-0" id="about">
+        <div class="container">
+            <!-- About Section Heading-->
+            <div class="text-center">
+                <h2 class="page-section-heading d-inline-block text-white">ABOUT</h2>
+            </div>
+            <!-- Icon Divider-->
+            <div class="divider-custom divider-light">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- About Section Content-->
+            <div class="row">
+                <div class="col-lg-4 ml-auto">
+                    <p class="pre-wrap lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The
+                        download
+                        includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS
+                        stylesheets for easy customization.</p>
+                </div>
+                <div class="col-lg-4 mr-auto">
+                    <p class="pre-wrap lead">You can create your own custom avatar for the masthead, change the icon in
+                        the
+                        dividers, and add your email address to the contact form to make it fully functional!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page-section" id="contact">
+        <div class="container">
+            <!-- Contact Section Heading-->
+            <div class="text-center">
+                <h2 class="page-section-heading text-secondary d-inline-block mb-0">CONTACT</h2>
+            </div>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Contact Section Content-->
+            <div class="row justify-content-center">
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="icon-contact mb-3"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="text-muted">Phone</div>
+                        <div class="lead font-weight-bold">(555) 555-5555</div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="icon-contact mb-3"><i class="far fa-envelope"></i></div>
+                        <div class="text-muted">Email</div><a class="lead font-weight-bold"
+                            href="mailto:name@example.com">name@example.com</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog"
-    aria-labelledby="#portfolioModal5Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
-                        class="fas fa-times"></i></span></button>
-            <div class="modal-body text-center">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8">
-                            <!-- Portfolio Modal - Title-->
-                            <h2 class="portfolio-modal-title text-secondary mb-0">Submarine</h2>
-                            <!-- Icon Divider-->
-                            <div class="divider-custom">
-                                <div class="divider-custom-line"></div>
-                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                <div class="divider-custom-line"></div>
-                            </div>
-                            <!-- Portfolio Modal - Image--><img class="img-fluid rounded mb-5"
-                                src="assets/img/portfolio/submarine.png" alt="Submarine" />
-                            <!-- Portfolio Modal - Text-->
-                            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.Mollitia neque
-                                assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit
-                                asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                            <button class="btn btn-primary" href="#" data-dismiss="modal"><i
-                                    class="fas fa-times fa-fw"></i>Close Window</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<section class="page-section bg-primary text-white mb-0" id="about">
-    <div class="container">
-        <!-- About Section Heading-->
-        <div class="text-center">
-            <h2 class="page-section-heading d-inline-block text-white">ABOUT</h2>
-        </div>
-        <!-- Icon Divider-->
-        <div class="divider-custom divider-light">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-        <!-- About Section Content-->
-        <div class="row">
-            <div class="col-lg-4 ml-auto">
-                <p class="pre-wrap lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download
-                    includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS
-                    stylesheets for easy customization.</p>
-            </div>
-            <div class="col-lg-4 mr-auto">
-                <p class="pre-wrap lead">You can create your own custom avatar for the masthead, change the icon in the
-                    dividers, and add your email address to the contact form to make it fully functional!</p>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="page-section" id="contact">
-    <div class="container">
-        <!-- Contact Section Heading-->
-        <div class="text-center">
-            <h2 class="page-section-heading text-secondary d-inline-block mb-0">CONTACT</h2>
-        </div>
-        <!-- Icon Divider-->
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-        <!-- Contact Section Content-->
-        <div class="row justify-content-center">
-            <div class="col-lg-4">
-                <div class="d-flex flex-column align-items-center">
-                    <div class="icon-contact mb-3"><i class="fas fa-mobile-alt"></i></div>
-                    <div class="text-muted">Phone</div>
-                    <div class="lead font-weight-bold">(555) 555-5555</div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="d-flex flex-column align-items-center">
-                    <div class="icon-contact mb-3"><i class="far fa-envelope"></i></div>
-                    <div class="text-muted">Email</div><a class="lead font-weight-bold"
-                        href="mailto:name@example.com">name@example.com</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<%- include('../partials/footer');%>
+    </section>
+    <%- include('../partials/footer');%>

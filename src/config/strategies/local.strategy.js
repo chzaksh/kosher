@@ -12,7 +12,7 @@ function localStrategy() {
             passwordField: 'password',
         }, (username, password, done) => {
             const url = 'mongodb://localhost:27017';
-            const dbName = 'freelanceApp';
+            const dbName = 'kosherWorld';
             (async () => {
                 let client;
                 try {

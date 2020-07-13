@@ -7,18 +7,6 @@ var falseCode = 0;
 
 
 
-function inputTel(input) { //בדיקת התאמה לטלפון
-    var inputTel = $(input);
-    var mailformat = /[0-9-()+]{3,20}/;
-    if (inputTel.val().match(mailformat) && inputTel.val().length > 7) {
-        inputTel.removeClass("error");
-        return true
-    } else {
-        inputTel.addClass("error");
-        error = "Press 8 minimum numbers\n";
-        return false
-    }
-}
 
 
 

@@ -1,47 +1,577 @@
-<%- include('../partials/header') %>
-<%- include('../partials/nav') %>
+<%- include('../partials/head') %>
 
-<header class="masthead bg-primary text-white text-center">
+<body id="sign">
+    <%- include('../partials/nav') %>
+    <%- include('../partials/header') %>
+
+
     <div class="container d-flex align-items-center flex-column">
-        <!-- Masthead Avatar Image--><img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="">
+
         <!-- Masthead Heading-->
-        <h1 class="masthead-heading mb-0"><%= pageTitle %></h1>
+        <h1 class=" mb-0"><%= pageTitle %></h1>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
             <div class="divider-custom-line"></div>
         </div>
-    </div>
+        <% if ( formName === 'newHotelsForm'){ %>
+        <h2> !בכדי לעזור לנו נשמח לקבל כמה שיותר פרטים על המקום </br>
+            ובכל מקרה יש לצרף לפחות לינק לאתר כלשהוא</br> שנותן פרטים יותר מדויקים </h2><%}%>
+</div>
 </header>
+<section class="container">
+    <div class="row justify-content-center py-4">
+        <div class="col-auto">
+            <form id="<%= formID %>" name="<%= formName %>" action="<%= formAction %>" method="post">
+        <% if (formName === 'contactUsForm' || formName === 'newHouseForm' || formName === 'advertisingForm'){ %>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="First Name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                    title="אנא הזן כתובת מייל תקינה" requiredplaceholder="Email">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="phone">Phone</label>
+                <input type="tel" class="form-control" id="phone" placeholder="phone">
+            </div>
+            <% } %>
+            <% if (formName === 'contactUsForm'){ %>
+            <div class="form-group col-md-6">
+                <textarea class="form-control" name="content" id="textarea">something you want to tell us...</textarea>
 
-<div class="row justify-content-center py-4">
-    <div class="col-auto">
-        <form id="login" name="<%= formName %>" action="<%= formAction %>" method="post">
-            <% if (formName === 'signUpForm'){ %>
-            <div class="mb-2">
-                <label class="d-block" for="username">Username:</label>
-                <input name="username" id="username" type="text" />
+            </div>
+        </div>
+        <% } %>
+
+        <% if ( formName === 'advertisingForm'){ %>
+    </div>
+    <%}%>
+        <% if ( formName === 'newHotelsForm'){ %>
+    <div class="form-row">
+        <%}%>
+                    <% if (formName === 'newHouseForm' || formName === 'newHotelsForm'){ %>
+        <div class="form-group col-md-6">
+            <label for="state">State</label>
+            <select id="state" class="form-control " data-live-search="true" data-flag="true">
+                <option value="">Choose...</option>
+                <option value="AF">Afghanistan</option>
+                <option value="AX"><img>Åland Islands</option>
+                <option value="AL"><img>Albania</option>
+                <option value="DZ"><img>Algeria</option>
+                <option value="AS"><img>American Samoa</option>
+                <option value="AD"><img>Andorra</option>
+                <option value="AO"><img>Angola</option>
+                <option value="AI"><img>Anguilla</option>
+                <option value="AQ"><img>Antarctica</option>
+                <option value="AG"><img>Antigua and Barbuda</option>
+                <option value="AR"><img>Argentina</option>
+                <option value="AM"><img>Armenia</option>
+                <option value="AW"><img>Aruba</option>
+                <option value="AU"><img>Australia</option>
+                <option value="AT"><img>Austria</option>
+                <option value="AZ"><img>Azerbaijan</option>
+                <option value="BS"><img>Bahamas</option>
+                <option value="BH"><img>Bahrain</option>
+                <option value="BD"><img>Bangladesh</option>
+                <option value="BB"><img>Barbados</option>
+                <option value="BY"><img>Belarus</option>
+                <option value="BE"><img>Belgium</option>
+                <option value="BZ"><img>Belize</option>
+                <option value="BJ"><img>Benin</option>
+                <option value="BM"><img>Bermuda</option>
+                <option value="BT"><img>Bhutan</option>
+                <option value="BO"><img>Bolivia, Plurinational State of</option>
+                <option value="BQ"><img>Bonaire, Sint Eustatius and Saba</option>
+                <option value="BA"><img>Bosnia and Herzegovina</option>
+                <option value="BW"><img>Botswana</option>
+                <option value="BV"><img>Bouvet Island</option>
+                <option value="BR"><img>Brazil</option>
+                <option value="IO"><img>British Indian Ocean Territory</option>
+                <option value="BN"><img>Brunei Darussalam</option>
+                <option value="BG"><img>Bulgaria</option>
+                <option value="BF"><img>Burkina Faso</option>
+                <option value="BI"><img>Burundi</option>
+                <option value="KH"><img>Cambodia</option>
+                <option value="CM"><img>Cameroon</option>
+                <option value="CA"><img>Canada</option>
+                <option value="CV"><img>Cape Verde</option>
+                <option value="KY"><img>Cayman Islands</option>
+                <option value="CF"><img>Central African Republic</option>
+                <option value="TD"><img>Chad</option>
+                <option value="CL"><img>Chile</option>
+                <option value="CN"><img>China</option>
+                <option value="CX"><img>Christmas Island</option>
+                <option value="CC"><img>Cocos (Keeling) Islands</option>
+                <option value="CO"><img>Colombia</option>
+                <option value="KM"><img>Comoros</option>
+                <option value="CG"><img>Congo</option>
+                <option value="CD"><img>Congo, the Democratic Republic of the</option>
+                <option value="CK"><img>Cook Islands</option>
+                <option value="CR"><img>Costa Rica</option>
+                <option value="CI"><img>Côte d'Ivoire</option>
+                <option value="HR"><img>Croatia</option>
+                <option value="CU"><img>Cuba</option>
+                <option value="CW"><img>Curaçao</option>
+                <option value="CY"><img>Cyprus</option>
+                <option value="CZ"><img>Czech Republic</option>
+                <option value="DK"><img>Denmark</option>
+                <option value="DJ"><img>Djibouti</option>
+                <option value="DM"><img>Dominica</option>
+                <option value="DO"><img>Dominican Republic</option>
+                <option value="EC"><img>Ecuador</option>
+                <option value="EG"><img>Egypt</option>
+                <option value="SV"><img>El Salvador</option>
+                <option value="GQ"><img>Equatorial Guinea</option>
+                <option value="ER"><img>Eritrea</option>
+                <option value="EE"><img>Estonia</option>
+                <option value="ET"><img>Ethiopia</option>
+                <option value="FK"><img>Falkland Islands (Malvinas)</option>
+                <option value="FO"><img>Faroe Islands</option>
+                <option value="FJ"><img>Fiji</option>
+                <option value="FI"><img>Finland</option>
+                <option value="FR"><img>France</option>
+                <option value="GF"><img>French Guiana</option>
+                <option value="PF"><img>French Polynesia</option>
+                <option value="TF"><img>French Southern Territories</option>
+                <option value="GA"><img>Gabon</option>
+                <option value="GM"><img>Gambia</option>
+                <option value="GE"><img>Georgia</option>
+                <option value="DE"><img>Germany</option>
+                <option value="GH"><img>Ghana</option>
+                <option value="GI"><img>Gibraltar</option>
+                <option value="GR"><img>Greece</option>
+                <option value="GL"><img>Greenland</option>
+                <option value="GD"><img>Grenada</option>
+                <option value="GP"><img>Guadeloupe</option>
+                <option value="GU"><img>Guam</option>
+                <option value="GT"><img>Guatemala</option>
+                <option value="GG"><img>Guernsey</option>
+                <option value="GN"><img>Guinea</option>
+                <option value="GW"><img>Guinea-Bissau</option>
+                <option value="GY"><img>Guyana</option>
+                <option value="HT"><img>Haiti</option>
+                <option value="HM"><img>Heard Island and McDonald Islands</option>
+                <option value="VA"><img>Holy See (Vatican City State)</option>
+                <option value="HN"><img>Honduras</option>
+                <option value="HK"><img>Hong Kong</option>
+                <option value="HU"><img>Hungary</option>
+                <option value="IS"><img>Iceland</option>
+                <option value="IN"><img>India</option>
+                <option value="ID"><img>Indonesia</option>
+                <option value="IR"><img>Iran, Islamic Republic of</option>
+                <option value="IQ"><img>Iraq</option>
+                <option value="IE"><img>Ireland</option>
+                <option value="IM"><img>Isle of Man</option>
+                <option value="IL"><img>Israel</option>
+                <option value="IT"><img>Italy</option>
+                <option value="JM"><img>Jamaica</option>
+                <option value="JP"><img>Japan</option>
+                <option value="JE"><img>Jersey</option>
+                <option value="JO"><img>Jordan</option>
+                <option value="KZ"><img>Kazakhstan</option>
+                <option value="KE"><img>Kenya</option>
+                <option value="KI"><img>Kiribati</option>
+                <option value="KP"><img>Korea, Democratic People's Republic of</option>
+                <option value="KR"><img>Korea, Republic of</option>
+                <option value="KW"><img>Kuwait</option>
+                <option value="KG"><img>Kyrgyzstan</option>
+                <option value="LA"><img>Lao People's Democratic Republic</option>
+                <option value="LV"><img>Latvia</option>
+                <option value="LB"><img>Lebanon</option>
+                <option value="LS"><img>Lesotho</option>
+                <option value="LR"><img>Liberia</option>
+                <option value="LY"><img>Libya</option>
+                <option value="LI"><img>Liechtenstein</option>
+                <option value="LT"><img>Lithuania</option>
+                <option value="LU"><img>Luxembourg</option>
+                <option value="MO"><img>Macao</option>
+                <option value="MK"><img>Macedonia, the former Yugoslav Republic of</option>
+                <option value="MG"><img>Madagascar</option>
+                <option value="MW"><img>Malawi</option>
+                <option value="MY"><img>Malaysia</option>
+                <option value="MV"><img>Maldives</option>
+                <option value="ML"><img>Mali</option>
+                <option value="MT"><img>Malta</option>
+                <option value="MH"><img>Marshall Islands</option>
+                <option value="MQ"><img>Martinique</option>
+                <option value="MR"><img>Mauritania</option>
+                <option value="MU"><img>Mauritius</option>
+                <option value="YT"><img>Mayotte</option>
+                <option value="MX"><img>Mexico</option>
+                <option value="FM"><img>Micronesia, Federated States of</option>
+                <option value="MD"><img>Moldova, Republic of</option>
+                <option value="MC"><img>Monaco</option>
+                <option value="MN"><img>Mongolia</option>
+                <option value="ME"><img>Montenegro</option>
+                <option value="MS"><img>Montserrat</option>
+                <option value="MA"><img>Morocco</option>
+                <option value="MZ"><img>Mozambique</option>
+                <option value="MM"><img>Myanmar</option>
+                <option value="NA"><img>Namibia</option>
+                <option value="NR"><img>Nauru</option>
+                <option value="NP"><img>Nepal</option>
+                <option value="NL"><img>Netherlands</option>
+                <option value="NC"><img>New Caledonia</option>
+                <option value="NZ"><img>New Zealand</option>
+                <option value="NI"><img>Nicaragua</option>
+                <option value="NE"><img>Niger</option>
+                <option value="NG"><img>Nigeria</option>
+                <option value="NU"><img>Niue</option>
+                <option value="NF"><img>Norfolk Island</option>
+                <option value="MP"><img>Northern Mariana Islands</option>
+                <option value="NO"><img>Norway</option>
+                <option value="OM"><img>Oman</option>
+                <option value="PK"><img>Pakistan</option>
+                <option value="PW"><img>Palau</option>
+                <option value="PS"><img>Palestinian Territory, Occupied</option>
+                <option value="PA"><img>Panama</option>
+                <option value="PG"><img>Papua New Guinea</option>
+                <option value="PY"><img>Paraguay</option>
+                <option value="PE"><img>Peru</option>
+                <option value="PH"><img>Philippines</option>
+                <option value="PN"><img>Pitcairn</option>
+                <option value="PL"><img>Poland</option>
+                <option value="PT"><img>Portugal</option>
+                <option value="PR"><img>Puerto Rico</option>
+                <option value="QA"><img>Qatar</option>
+                <option value="RE"><img>Réunion</option>
+                <option value="RO"><img>Romania</option>
+                <option value="RU"><img>Russian Federation</option>
+                <option value="RW"><img>Rwanda</option>
+                <option value="BL"><img>Saint Barthélemy</option>
+                <option value="SH"><img>Saint Helena, Ascension and Tristan da Cunha</option>
+                <option value="KN"><img>Saint Kitts and Nevis</option>
+                <option value="LC"><img>Saint Lucia</option>
+                <option value="MF"><img>Saint Martin (French part)</option>
+                <option value="PM"><img>Saint Pierre and Miquelon</option>
+                <option value="VC"><img>Saint Vincent and the Grenadines</option>
+                <option value="WS"><img>Samoa</option>
+                <option value="SM"><img>San Marino</option>
+                <option value="ST"><img>Sao Tome and Principe</option>
+                <option value="SA"><img>Saudi Arabia</option>
+                <option value="SN"><img>Senegal</option>
+                <option value="RS"><img>Serbia</option>
+                <option value="SC"><img>Seychelles</option>
+                <option value="SL"><img>Sierra Leone</option>
+                <option value="SG"><img>Singapore</option>
+                <option value="SX"><img>Sint Maarten (Dutch part)</option>
+                <option value="SK"><img>Slovakia</option>
+                <option value="SI"><img>Slovenia</option>
+                <option value="SB"><img>Solomon Islands</option>
+                <option value="SO"><img>Somalia</option>
+                <option value="ZA"><img>South Africa</option>
+                <option value="GS"><img>South Georgia and the South Sandwich Islands</option>
+                <option value="SS"><img>South Sudan</option>
+                <option value="ES"><img>Spain</option>
+                <option value="LK"><img>Sri Lanka</option>
+                <option value="SD"><img>Sudan</option>
+                <option value="SR"><img>Suriname</option>
+                <option value="SJ"><img>Svalbard and Jan Mayen</option>
+                <option value="SZ"><img>Swaziland</option>
+                <option value="SE"><img>Sweden</option>
+                <option value="CH"><img>Switzerland</option>
+                <option value="SY"><img>Syrian Arab Republic</option>
+                <option value="TW"><img>Taiwan, Province of China</option>
+                <option value="TJ"><img>Tajikistan</option>
+                <option value="TZ"><img>Tanzania, United Republic of</option>
+                <option value="TH"><img>Thailand</option>
+                <option value="TL"><img>Timor-Leste</option>
+                <option value="TG"><img>Togo</option>
+                <option value="TK"><img>Tokelau</option>
+                <option value="TO"><img>Tonga</option>
+                <option value="TT"><img>Trinidad and Tobago</option>
+                <option value="TN"><img>Tunisia</option>
+                <option value="TR"><img>Turkey</option>
+                <option value="TM"><img>Turkmenistan</option>
+                <option value="TC"><img>Turks and Caicos Islands</option>
+                <option value="TV"><img>Tuvalu</option>
+                <option value="UG"><img>Uganda</option>
+                <option value="UA"><img>Ukraine</option>
+                <option value="AE"><img>United Arab Emirates</option>
+                <option value="GB"><img>United Kingdom</option>
+                <option value="US"><img>United States</option>
+                <option value="UM"><img>United States Minor Outlying Islands</option>
+                <option value="UY"><img>Uruguay</option>
+                <option value="UZ"><img>Uzbekistan</option>
+                <option value="VU"><img>Vanuatu</option>
+                <option value="VE"><img>Venezuela, Bolivarian Republic of</option>
+                <option value="VN"><img>Viet Nam</option>
+                <option value="VG"><img>Virgin Islands, British</option>
+                <option value="VI"><img>Virgin Islands, U.S.</option>
+                <option value="WF"><img>Wallis and Futuna</option>
+                <option value="EH"><img>Western Sahara</option>
+                <option value="YE"><img>Yemen</option>
+                <option value="ZM"><img>Zambia</option>
+                <option value="ZW"><img>Zimbabwe</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label for="hotel">Name of the hotel</label>
+                <input id="hotel" type="text" name="" value="" class=" form-control" id="title">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" placeholder="1234 Main St">
+            </div>
+
+
+            <div class="form-group col-md-6">
+                <label for="guestt">guest maximum</label>
+                <input type="number" class="form-control" id="guest" placeholder="guest">
             </div>
             <%}%>
-            <div class="mb-3">
-                <label class="d-block">Email:</label>
-                <input id="email" type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="אנא הזן כתובת מייל תקינה" required
-                >
+            <% if ( formName === 'newHotelsForm'){ %>
+            <div class="form-group col-md-6">
+                <label for="phone">phone</label>
+                <input type="tel" class="form-control" id="phone" placeholder="phone">
             </div>
-            
-            <!-- <div class="mb-4">
-                <label class="d-block" for="password">Password:</label>
-                <input id="inputPassword" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}" title="הסיסמא חייב להכיל לפחות אות קטנה אחת, אות גדולה אחת ומספר אחד. 6-12 תווים" required />
-            </div> -->
+            <% }else if( formName === 'newHouseForm') { %>
+            <div class="form-group col-md-6">
+                <label for="textarea">פרטים על הבית</label>
+                <textarea class="form-control" name="content" id="textarea">something you want to tell us...</textarea>
 
-            <input type="submit" value="<%= submitValue %>">
+            </div>
+            <% }%>
+            <% if (formName === 'newHouseForm' || formName === 'newHotelsForm'){ %>
+        </div>
+    </div>
+    <%}%>
+       
+    <% if ( formName === 'newHotelsForm' || formName === 'advertisingForm'){ %>
+
+    <label for="url">Link</label>
+    <div class="input-group mb-3" id="urlDiv">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+        </div>
+        <input type="url" class="form-control" id="url" aria-describedby="basic-addon3">
+
+    </div>
+    <% }%>
+    <% if ( formName === 'advertisingForm'){ %>
+    <!-- <div class="form-group">
+            <div class="form-row">
+               
+            </div>
+        </div> -->
+    <div class="form-group ">
+        <div class="form-row">
+
+            <div class="form-control-file">
+                <input type="file" class="form-group" id="logo" required accept="image/*">
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+    <% }%>
+    <% if ( formName === 'newHotelsForm'){ %>
+    <div class="form-row">
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="door">
+            <label for="" class=" form-check-label">כניסה במפתח וללא כרטיס</label>
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="lights">
+            <label for="" class=" form-check-label">ללא אורות שנדלקים ע"י חיישנים</label>
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="air-conditioner">
+            <label for="" class="form-check-label">מזגן נשלט</label>
+        </div>
+
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="frijider">
+            <label for="" class="form-check-label">מקרר פרטי בחדר</label>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="chabad">
+            <label for="" class="form-check-label"> קרוב לבית חב"ד / בית כנסת פעיל</label>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="foodKosher">
+            <label for="" class="form-check-label"> אוכל כשר</label>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="airuve">
+            <label for="" class="form-check-label"> עירוב</label>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-check col-md-12 ">
+
+            <label for="">something you want to tell us...</label>
+            <textarea class="form-control" name="content" id="textarea" placeholder=""></textarea>
+
+        </div>
+    </div>
+
+
+    <%}%>
+               <% if ( formName === 'newHouseForm'){ %>
+    <div class="form-group">
+        <div class="form-row">
+
+            <div class="form-group">
+                <input type="radio" checked class=" form-group i-block" name="ple" value="villa">
+                <label for="">דירה</label>
+                <input type="radio" class=" form-group i-block" name="ple" value="appartment">
+                <label for="">וילה</label>
+                <h3 class="d-inline-block">:סוג הבית </h3>
+            </div>
+            <div class="form-group">
+                <!-- <input type="file" class="" id="file0"> -->
+                <h3 class="d-inline-block">:תמונה חיצונית של הבית </h3>
+            </div>
+            <div>
+                <!-- <input type="file" class=" form-group" id="file1">
+                <input type="file" class=" form-group" id="file2">
+                <input type="file" class=" form-group" id="file3">
+                <input type="file" class=" form-group" id="file4">
+                <input type="file" class=" form-group" id="file5">
+                <input type="file" class=" form-group" id="file6"> -->
+                <!-- <input type="file" class=" form-group" id="exampleFormControlFile8">
+                    <input type="file" class=" form-group" id="exampleFormControlFile9"> -->
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <%}%>
+            <% if (formName === 'signUpForm'){ %>
+
+    <div class="mb-2">
+        <label class="d-block" for="username">Username:</label>
+        <input name="username" class="form-control" id="userName" type="text" required />
+    </div>
+    <%}%>
+            <% if ( formName === 'newHotelsForm'){ %>
+    <h2 class="text-center">הוסף פרטים ליצירת קשר</h2>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="phoneContent">phone content</label>
+            <input type="tel" class="form-control" id="phoneContent" placeholder="phone content">
+        </div>
+        <div class="form-group col-md-6">
+            <%}%>
+        <% if (formName === 'signUpForm' || formName === 'signInForm'){ %>
+            <div class="form-row">
+            <div class="form-group md-4">
+                <%}%>
+                <% if (formName === 'signUpForm' || formName === 'signInForm'|| formName === 'newHotelsForm'){ %>
+
+
+                <label class="d-block">Email:</label>
+                <input id="email" class="form-control" type="email" name="email" placeholder="
+         <% if(formName==='newHotelsForm'){ %> 
+            <%= 'Write an email address we can contact you' %>
+            <% } %> " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="אנא הזן כתובת מייל תקינה" required>
+            </div>
+        </div>
+        <%}%>
+        
+  
+        <% if (formName === 'signUpForm' || formName === 'signInForm'){ %>
+        <div class="mb-4">
+            <label class="d-block" for="password">Password:</label>
+            <input id="password" class="form-control" type="password" name="password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}"
+                title="הסיסמא חייב להכיל לפחות אות קטנה אחת, אות גדולה אחת ומספר אחד. 6-12 תווים" required />
+        </div>
+        <%}%>
+        <% if (formName === 'newHouseForm' || formName === 'advertisingForm' ){ %>
+
+
+        <div class="card-deck mb-3 text-center">
+
+            <div class="card mb-4 shadow-sm">
+
+                <div class="card-header">
+                    <input type="radio" class="form-radio-input" name="manuy" value="<% if (formID === 'advertising'){ %>20<%} else{ %>0 <%}%>" id="free" checked>
+                <h4 class="my-0 font-weight-normal"><% if (formID === 'advertising'){ %>
+                    month<%} else{ %><%= Object.keys(price[0])[0]%> <%}%>
+                </h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">
+                     <%= price[0].Free%> <small class=" text-muted"></small>
+                    </h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li><%= price[0].text%> </li>
+                    </ul>
+                    <!-- <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button> -->
+                </div>
+            </div>
+
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <input type="radio" class="form-radio-input" name="manuy" value="<% if (formID === 'advertising'){ %>50<%} else{ %>15 <%}%>" id="pro">
+                <h4 class="my-0 font-weight-normal"><% if (formID === 'advertising'){ %> six months<%} else{ %><%= Object.keys(price[1])[0]%><%}%></h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title"><%= price[1].Pro%><small class=" text-muted"></small>
+                    </h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li><%= price[1].text%></li>
+
+                    </ul>
+                    <!-- <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button> -->
+                </div>
+            </div>
+
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <input type="radio" class="form-radio-input" name="manuy" value="<% if (formID === 'advertising'){ %>90<%} else{ %>29 <%}%>" id="enterprise">
+                <h4 class="my-0 font-weight-normal"><% if (formID === 'advertising'){ %>year<%} else{ %><%= Object.keys(price[2])[0]%><%}%></h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title"><%= price[2].Enterprise%> <small
+                        class=" text-muted"></small></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li><%= price[2].text%></li>
+                    </ul>
+                    <!-- <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button> -->
+                </div>
+            </div>
+        </div>
+        <%}%>
+            <input type="submit" class="btn btn-primary col-md-6" value="<%= submitValue %>">
         </form>
         <% if (formName === 'signUpForm'){ %>
         <a href="/signin" class="mt-4 d-block">sign in</a>
         <%}%>
+
     </div>
 </div>
-
+</section>
 
  <%- include('../partials/footer') %>

@@ -74,6 +74,14 @@ body {
     background-color: #fff
 }
 
+#sign input[type="submit"],
+#contact-us input[type="submit"] {
+    font-size: 20px;
+    margin-left: 23%;
+    padding: 10px;
+}
+
+
 [tabindex="-1"]:focus:not(:focus-visible) {
     outline: 0 !important
 }
@@ -230,7 +238,7 @@ caption {
     padding-bottom: .75rem;
     color: #6c757d;
     text-align: left;
-    caption-side: bottom
+    caption-side: bottom;
 }
 
 th {
@@ -239,7 +247,7 @@ th {
 
 label {
     display: inline-block;
-    margin-bottom: .5rem
+    margin: 0 34px .5rem 0;
 }
 
 button {
@@ -584,10 +592,90 @@ pre code {
     margin-right: auto;
     margin-left: auto
 }
-#bth_Log_in, #bth_registr{
+
+.box_hotel img {
+    height: 150px;
+}
+
+.checkbox_div {
+    margin: 35px 5px;
+    width: 250px;
+}
+
+#bth_Log_in,
+#bth_registr {
     margin: 3px;
 }
 
+.back-cadetblue {
+    background-color: cadetblue;
+}
+
+.border-bottom-top {
+    border-top: white 2px solid;
+    border-bottom: white 2px solid;
+    margin: 30px 0 15px;
+    padding: 10px 0;
+    font-size: 12px;
+}
+.error {
+    border: 3px red solid;
+}
+
+
+/* .radius-top{
+    border-radius: 10px 10px 0 0;
+    margin: -14px -14px -10px;
+}
+.radius-bottom{
+    border-radius: 0 0 10px 10px;
+    margin: -10px -14px -14px;
+} */
+/* .card-hotel-margin{
+    border-radius: 0 0 10px 10px;
+} */
+ .bootstrap-select>.dropdown-toggle {
+    width: 85px;
+}
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 100px;
+} 
+
+#albomPraivate{
+    margin-right: -6.5rem;
+    margin-left: 5.9rem;
+}
+
+
+.selectZmanim {
+    position: absolute;
+    top: 130px;
+    left: 45px;
+    width: 261px;
+    height: 385px;
+    padding: 15px;
+    background-color: #79ae8b;
+    border-radius: 5px;
+    border: black 1px solid;
+}
+
+.selectZmanim button {
+    margin: 5px 0px;
+    font-size: 10px;
+}
+#addBox img {
+    padding: 10px;
+}
+ #addBox a,  #addBox {
+     margin: 10px;
+ }
+ #addBox {
+     width: 100%;
+ }
+aside .container {
+    padding-left: 0;
+}
 
 @media (min-width:576px) {
     .container {
@@ -4374,6 +4462,7 @@ input[type=submit].btn-block {
     }
 }
 
+
 .nav {
     display: flex;
     flex-wrap: wrap;
@@ -7064,13 +7153,18 @@ button.bg-dark:hover {
 .border-white {
     border-color: #fff !important
 }
-
+#advertising{
+    top: 380px;
+}
+#basic-url{
+    border-radius: 0px .5rem .5rem 0px;
+}
 .rounded-sm {
     border-radius: .25rem !important
 }
 
 .rounded {
-    border-radius: .5rem !important
+    border-radius: 1.5rem !important
 }
 
 .rounded-top {
@@ -8581,7 +8675,7 @@ button.bg-dark:hover {
 
 .pt-5,
 .py-5 {
-    padding-top: 3rem !important
+    /* padding-top: 3rem !important */
 }
 
 .pr-5,
@@ -10823,7 +10917,7 @@ a.text-dark:hover {
 }
 
 .page-section {
-    padding: 6rem 0
+    /* padding: 6rem 0 */
 }
 
 .page-section .page-section-heading {
@@ -10904,52 +10998,81 @@ a.text-dark:hover {
     background-color: rgba(33, 37, 41, .5);
     line-height: 3.1rem
 }
-#add-post-new{
-    margin-top: 60px;
+
+.serchehome {
     padding: 30px;
     border: 2px solid;
     text-align: center;
-    width: 450px;
+    width: 850px;
     background-color: darkcyan;
-    margin-left: 30%
 }
-input::placeholder{
+
+.serchehome h2 {
+    margin: -30px
+}
+
+input::placeholder {
     text-align: center;
 }
-h2{
+
+h2 {
     padding: 15px;
 }
-.post_box{
+
+aside{
+    width: 260px;
+    position: absolute;
+    left: 45px;
+    top: 530px;
+    border: 1px black solid;
+    padding: 15px 0;
+    background-color: #79ae8b;
+    border-radius: 5px;
+}
+.editNewHome,
+.editNewHotel {
+    position: absolute;
+    top: 115px;
+    right: 30px;
     border: burlywood 2px solid;
     border-radius: 5px;
-    width: 250px;
+    width: 263px;
     padding: 15px;
     margin: 15px;
     display: inline-block;
     background-color: darkcyan;
 }
-h1{
+
+.editNewHotel {
+    top: 235px;
+}
+
+h1 {
     text-align: center;
     font-size: 50px;
     background-color: cornflowerblue;
 }
-.post_box a{
+
+.post_box a {
     color: black;
 }
-.flex{
+
+.flex {
     display: flow-root;
     justify-content: space-between;
     margin-top: 25px;
     border: white 2px solid;
     padding: 0;
 }
-.butons{
-    text-align:left;
+
+.butons {
+    text-align: left;
     padding-left: 100px;
 }
-.butons button{
+
+.butons button {
     margin: 5px;
-    
+
 }
 
 #mainNav {
@@ -10989,6 +11112,25 @@ h1{
     padding: .8rem
 }
 
+#aaa {
+    background-color: brown;
+    margin: 15px 0;
+}
+
+#aaa figure {
+    margin: 15px -25px 1rem;
+}
+
+#aaa h7 {
+    display: block;
+    margin: 15px 15px;
+}
+
+h2 .mr-5 {
+    margin-right: 2rem !important;
+}
+
+
 @media (min-width:992px) {
     #mainNav {
         padding-top: 1.5rem;
@@ -11024,8 +11166,8 @@ h1{
 }
 
 .masthead {
-    padding-top: calc(6rem + 74px);
-    padding-bottom: 6rem
+    padding-top: calc(3rem + 74px);
+    padding-bottom: 1rem
 }
 
 .masthead .masthead-heading {
@@ -11042,10 +11184,10 @@ h1{
 }
 
 @media (min-width:992px) {
-    .masthead {
+    /* .masthead {
         padding-top: calc(6rem + 104px);
         padding-bottom: 6rem
-    }
+    } */
 
     .masthead .masthead-heading {
         font-size: 4rem;
@@ -11171,8 +11313,8 @@ form .row:first-child .floating-label-form-group {
 }
 
 .portfolio {
-    padding-top: 6rem;
-    padding-bottom: 4.5rem
+    /* padding-top: 6rem;
+    padding-bottom: 4.5rem */
 }
 
 .page-section-heading {

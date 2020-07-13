@@ -5,16 +5,20 @@ const {
 const passport = require('passport');
 const debug = require('debug')('app:authRoutes');
 const User = require('../schemas/UserSchema')
-
+const {
+    json
+} = require('body-parser');
 const authRouter = express.Router();
 
+
+
 function router(db) {
-    
 
-    authRouter.route('/sign-up') //פתיחת רוט חדש
 
-        .post((req, res) => { //מטוד פוסט
-            const { //תפיסת אינפוט מהבודי
+    authRouter.route('/sign-up')
+
+        .post((req, res) => {
+            const {
                 email,
                 password
             } = req.body;
@@ -31,16 +35,53 @@ function router(db) {
                         email,
                         password
                     }
-                    const results = await User.collection.insertOne(user)
-                    req.login(results.ops[0], () => {
-                        res.redirect('/auth/profile')
-                    })
+                    const results = await User.collection.findOne(user)
+                    debug(results)
+                    // if (results)
+
+                    // const results = await User.collection.insertOne(user)
+                    // req.login(results.ops[0], () => {
+                    //     res.redirect('/auth/profile')
+                    // })
                 } catch (err) {
                     debug(err);
                 }
                 // client.close()
             })();
         });
+
+    // authRouter.use(bodyParser.urlencoded({ extended: false }))
+    authRouter.route('/contact-us')
+        .put((req, res) => {
+            debug(5555555555)
+            debug(req.body)
+           
+
+            // const {
+            //     firstName,
+            //     email,
+            //     phone
+            // } =      req.body;
+            // debug(firstName,
+            //     email,
+            //     phone)
+            // (async () => {
+
+            //     try {
+            // //         const user = {
+            // //             email,
+            // //             password
+            // //         }
+            //         const results = await User.collection.insertOne()
+            //         debug(results)
+
+            //     } catch (err) {
+            //         debug(err);
+            //     }
+
+            //  })();
+        });
+
 
     authRouter.route('/profile')
         .all((req, res, next) => {

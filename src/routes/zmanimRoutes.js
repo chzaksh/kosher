@@ -2,33 +2,47 @@ const express = require('express')
 const debug = require('debug')('app:zmanim')
 const KosherZmanim = require("kosher-zmanim");
 const zmanimRoute = express.Router();
+var zman = null;
 
 
-
-function routerFunction(nav, menuSign) {
+function routerFunction(nav, menuSign, zmanimMenu) {
     const data = new KosherZmanim.ZmanimCalendar();
-    const zmanimJSON = KosherZmanim.getZmanimJson(data.date.loc.locale)
-    debug(zmanimJSON.metadata.date)
-    //  const location = data.date.loc.locale;
+    (async () => {
+        const zmanimJSON = await KosherZmanim.getZmanimJson(data.date.loc.locale)
+        
+        // zman = JSON.parse(zmanimJSON);
+        debug(zman);
+        try {
+            zmanimRoute.get('/', (req, res) => {
+
+
+                res.render('pages/zmanim', {
+                    menuSign,
+                    nav,
+                    zman,
+                    zmanimMenu
+                })
+
+            })
+
+
+        } catch (err) {
+            debug(err);
+        }
+
+    })();
+
+
+
+    // //  const location = data.date.loc.locale;
     //     const date1 = zmanimJSON.metadata.date;
 
-    const location= data.date.loc.locale;
-       const date1 = zmanimJSON.metadata.date;
-    const zmanim = [location, date1];
-    
-    zmanimRoute.get('/', (req, res) => {
-
-       
+    // const location= data.date.loc.locale;
+    //    const date1 = zmanimJSON.metadata.date;
 
 
 
-        res.render('pages/zmanim', {
-            menuSign,
-            nav,
-            zmanim
-        })
 
-    })
 
 
 

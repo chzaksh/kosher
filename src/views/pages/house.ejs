@@ -1,0 +1,83 @@
+<%- include('../partials/head') %>
+<body id="page-top" >
+<%- include('../partials/nav') %>
+<%- include('../partials/header') %>
+
+
+</header>
+
+
+<section  class="page-section portfolio bg-primary text-white mb-0">
+    <div class="album py-5 ">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div id="aaa"class="col-md-8">
+                    <div >
+                        <figure class="col-md-5 float-right">
+                            <img src="<%=content.img%>" width=" 100%" height="100%" alt="">
+                        </figure>
+                        <div>
+                            <h2 class=""><%=content.title%><span> <h5 class="float-right d-block mr-5"><%=content.text %></h5><h5 class="float-laft"><%=content.city%></h5></span></h2>
+                           
+                            <h7>guest:
+                                <% for (let y = 0; y < content.guest; y++){%>
+                                <i class="fas fa-male"></i>
+                                <%}%>
+                            </h7>
+                            
+                            <h7>Customer Rating:
+                                <% for (let x = 0; x < content.star; x++){ %>
+                                <i class="fas fa-star"></i>
+                                <% }%>
+                            </h7>
+
+                            <div> <a class="btn btn-primary " href="/home-page/<%= content._id%>">תגובות</a>
+                                <a class="btn btn-primary " href="<%= content.link%>">עבור לעמוד</a>
+                                    <div>
+                                        <i class="fas fa-thumbs-up"></i>אהבתי
+                                        <i class="fas fa-thumbs-down"></i>לא אהבתי
+                                    </div> <!-- <h7>price: <span><%=content.price %></span></h7> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+           
+        </div>
+    </div>
+</section>
+<section class="page-section portfolio">
+
+
+    <div class="container">
+        <h1 class="masthead-heading mb-0">
+            <%=title%>
+        </h1>
+
+        <div class="text-center">
+            <h2 class="page-section-heading text-secondary mb-0 d-inline-block">
+                <%=content.title%>
+            </h2>
+        </div>
+        <button class="delete-me" id="<%=id%>">delete me</button>
+
+        <p class="mb-5">
+            <%=content.text%>
+        </p>
+        <div>
+            <i class="fas fa-thumbs-up"></i>אהבתי
+            <i class="fas fa-thumbs-down"></i>לא אהבתי
+        </div>
+
+
+    </div>
+</section>
+
+<!-- 
+<script src="../../../public/js/scripts.js"> -->
+
+</script>
+
+
+<%- include('../partials/footer') %>
