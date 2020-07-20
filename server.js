@@ -7,7 +7,9 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const port = 3000;
 const mongoose = require('mongoose');
-const chalk = require('chalk')
+const chalk = require('chalk');
+const p = require('body-parser');
+
 // const bodyParser = require('body-parser')
 // const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
@@ -67,7 +69,10 @@ app.use(morgan('tiny'))
 app.use(express.urlencoded({
   extended: false
 }))
-// app.use(bodyParser.json())
+
+// app.use(p.json())
+// app.use(p.urlencoded({ extended: true }))
+
 app.set('views', './src/views')
 app.set('view engine', 'ejs')
 
@@ -86,7 +91,7 @@ app.use('/private-house', housePrivateRouter);
 app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
 app.use('/zmanim', zmanimRouter)
-
+// app.use(p)
 
 app.get('/signup', (req, res) => {
   res.render('pages/sign', {
@@ -120,7 +125,7 @@ app.get('/newHouse', (req, res) => {
     formID: 'newHouseForm',
     pageTitle: 'הוספת בית פרטי',
     formName: 'newHouseForm',
-    formAction: '/auth/new-House',
+    formAction: '/admin/new-House',
     submitValue: 'submit',
     price: [{Free: '$0', text: 'חודש נסיון מתנה'}, {'Pro': '$15', 'text': 'פרסום חצי שנה'}, {'Enterprise': '$29', 'text': 'פרסום שנה שלימה'}],
     nav,
@@ -134,7 +139,7 @@ app.get('/newLinkHotel', (req, res) => {
     formID: 'newHotelsForm',
     pageTitle: 'הוספת מלון/בית הארחה ',
     formName: 'newHotelsForm',
-    formAction: '/auth/new-Hotels',
+    formAction: '/admin/new-Hotels',
     submitValue: 'submit',
     nav,
     menuSign: true,
@@ -148,7 +153,7 @@ app.get('/contact-us', (req, res) => {
     formID: 'contact-us',
     pageTitle: 'contact-us',
     formName: 'contactUsForm',
-    formAction: '/auth/contact-us',
+    formAction: '/admin/contact-us',
     submitValue: 'submit',
     nav,
     menuSign: true,
@@ -160,7 +165,7 @@ app.get('/newAdvertising', (req, res) => {
     formID: 'advertising',
     pageTitle: 'advertising',
     formName: 'advertisingForm',
-    formAction: '/auth/newAdvertising',
+    formAction: '/admin/newAdvertising',
     submitValue: 'submit',
     price: [{'Free': '$20', 'text': 'חודש אחד'}, {'Pro': '$50', 'text':` פרסום 6 חודשים `}, {'Enterprise': '$90', 'text': 'פרסום 12 חודשים'}],
     nav,

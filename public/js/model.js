@@ -16,6 +16,13 @@ function checkSelect(input) {
   }
 }
 
+function objectKeys(body) {
+  const data = Object.keys(body).map((key) => {
+    return encodeURIComponent(key) + '=' + encodeURIComponent(body[key]);
+  }).join('&');
+  return data
+}
+
 function checkClier(from) { //בדיקת תאי אינפוט ריקים
   const arrayFrom = from.find('input');
   let ans = 0;
@@ -78,11 +85,32 @@ function inputPassword(input) {
   }
 }
 
+async function putDB(url, method, data) {
+  console.log(`http://localhost:3000/${url}`)
+  response = await fetch(`http://localhost:3000/${url}`, {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    method: method,
+    body: data,
+  });
+  if (response.status == "OK" && response.affectedRows == 1) {
+    result = true
+    console.log(response, 132)
+    console.log(result)
+}
+  
+}
+
+
+
 export {
   error1,
   checkClier,
   inputEmail,
   inputTel,
   inputPassword,
-  checkSelect
+  checkSelect,
+  objectKeys,
+  putDB
 }

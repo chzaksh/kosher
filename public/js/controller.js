@@ -115,48 +115,68 @@ export function init() {
   async function submit(form, formID) { //שליחת טופס לוגין לבדיקה
     let nameForm = await checkNameForm(form, formID)
     model.error1() //מורקן את הודעת השגיאה
+    console.log(nameForm)
 
+    // if (nameForm) {
+    //   console.log(true)
+    // } else {
+    //   console.log(false)
+    // }
 
   }
 
 
   async function checkNameForm(form, formID) {
-    const fromData = new FormData()
+    // const fromData = new FormData()
     let response = false
-    const name = formID
     let method = 'put'
+    let data = null
+    let url = null
+    let body = null
+
     if (formID == 'signUpForm' || formID == 'signInForm') {
       if (model.checkClier(form) && model.inputEmail('#email') && model.inputPassword('#password')) {
-        method = 'post'
         if (formID == 'signUpForm') {
-          fromData.append('firstName', $('#firstName').val())
-          fromData.append('email', $('#email').val())
-          fromData.append('password', $('#password').val())
-
+          // fromData.append('firstName', $('#firstName').val())
+          // fromData.append('email', $('#email').val())
+          // fromData.append('password', $('#password').val())
+          body = {
+            "userName": $('#userName').val(),
+            "email": $('#email').val(),
+            "id_3": 3,
+            "password": $('#password').val(),
+          }
+          url = 'auth/sign-up'
         } else {
-          fromData.append('email', $('#email').val())
-          fromData.append('password', $('#password').val())
-          login(fromData)
+          // fromData.append('email', $('#email').val())
+          // fromData.append('password', $('#password').val())
+          method = 'post'
+          body = {
+            "email": $('#email').val(),
+            "password": $('#password').val(),
+          }
+          url = 'auth/sign-in'
         }
+        data = model.objectKeys(body)
       }
     }
     if (formID === 'contact-us') { //להוסיף טקסט אקסטרה
       if (model.checkClier(form) && model.inputEmail('#email') && model.inputTel('#phone')) {
-        fromData.append('firstName', $('#firstName').val())
-        fromData.append('lastName', $('#lastName').val())
-        fromData.append('email', $('#email').val())
-        fromData.append('phone', $('#phone').val())
-     
-        response = await fetch('http://localhost:3000/auth/contact-us', {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-        method:'put',
-        body: fromData,
-      });
-       
-        
-        
+        // fromData.append('firstName', $('#firstName').val())
+        // fromData.append('lastName', $('#lastName').val())
+        // fromData.append('email', $('#email').val())
+        // fromData.append('phone', $('#phone').val())
+        // fromData.append('textarea', $('#textarea').val())
+        body = {
+          "firstName": $('#firstName').val(),
+          "lastName": $('#lastName').val(),
+          "email": $('#email').val(),
+          "phone": $('#phone').val(),
+          "textarea": $('#textarea').val()
+        }
+        data = model.objectKeys(body)
+        url = 'admin/contact-us'
+
         // login(fromData)
         // response = await fetch('http://localhost:3000/auth/contact-us', {
         //   method: 'put',
@@ -170,72 +190,125 @@ export function init() {
     }
     if (formID == 'newHotelsForm') {
       if (model.inputEmail('#email') && model.checkClier($('#urlDiv'))) {
-        fromData.append('hotel', $('#hotel').val())
-        fromData.append('lights', $('#lights').is(":checked"))
-        fromData.append('air-conditioner', $('#air-conditioner').is(":checked"))
-        fromData.append('door', $('#door').is(":checked"))
-        fromData.append('chabad', $('#chabad').is(":checked"))
-        fromData.append('foodKosher', $('#foodKosher').is(":checked"))
-        fromData.append('freezer', $('#freezer').is(":checked"))
-        fromData.append('airuve', $('#airuve').is(":checked"))
-        fromData.append('email', $('#email').val())
-        fromData.append('phoneContent', $('#phoneContent').val())
-        fromData.append('textarea', $('#textarea').val())
-        fromData.append('state', $('#state').val())
-        fromData.append('city', $('#city').val())
-        fromData.append('guest', $('#guest').val())
-        fromData.append('phone', $('#phone').val())
-        fromData.append('url', $('#url').val())
-        fromData.append('address', $('#address').val())
+        // fromData.append('hotel', $('#hotel').val())
+        // fromData.append('lights', $('#lights').is(":checked"))
+        // fromData.append('air-conditioner', $('#air-conditioner').is(":checked"))
+        // fromData.append('door', $('#door').is(":checked"))
+        // fromData.append('chabad', $('#chabad').is(":checked"))
+        // fromData.append('foodKosher', $('#foodKosher').is(":checked"))
+        // fromData.append('freezer', $('#freezer').is(":checked"))
+        // fromData.append('airuve', $('#airuve').is(":checked"))
+        // fromData.append('email', $('#email').val())
+        // fromData.append('phoneContent', $('#phoneContent').val())
+        // fromData.append('textarea', $('#textarea').val())
+        // fromData.append('state', $('#state').val())
+        // fromData.append('city', $('#city').val())
+        // fromData.append('guest', $('#guest').val())
+        // fromData.append('phone', $('#phone').val())
+        // fromData.append('url', $('#url').val())
+        // fromData.append('address', $('#address').val())
+        body = {
+          "hotel": $('#hotel').val(),
+          "lights": $('#lights').is(":checked"),
+          "airConditioner": $('#air-conditioner').is(":checked"),
+          "door": $('#door').is(":checked"),
+          "chabad": $('#chabad').is(":checked"),
+          "foodKosher": $('#foodKosher').is(":checked"),
+          "freezer": $('#freezer').is(":checked"),
+          "airuve": $('#airuve').is(":checked"),
+          "email": $('#email').val(),
+          "phoneContent": $('#phoneContent').val(),
+          "textarea": $('#textarea').val(),
+          "state": $('#state').val(),
+          "city": $('#city').val(),
+          "guest": $('#guest').val(),
+          "phone": $('#phone').val(),
+          "url": $('#url').val(),
+          "address": $('#address').val(),
+          "plece": $('input[name=ple]:checked').val()
+        }
+        data = model.objectKeys(body)
+        url = 'admin/new-Hotels'
 
-        login(fromData)
       }
     }
     if (formID == 'advertising') {
       if (model.checkClier(form) && model.inputEmail('#email') && model.inputTel('#phone')) {
-        fromData.append('firstName', $('#firstName').val())
-        fromData.append('lastName', $('#lastName').val())
-        fromData.append('email', $('#email').val())
-        fromData.append('phone', $('#phone').val())
-        fromData.append('url', $('#url').val())
-        fromData.append('manuy', $('input[name=manuy]:checked').val())
-        login(fromData)
+        // fromData.append('firstName', $('#firstName').val())
+        // fromData.append('lastName', $('#lastName').val())
+        // fromData.append('email', $('#email').val())
+        // fromData.append('phone', $('#phone').val())
+        // fromData.append('url', $('#url').val())
+        // fromData.append('manuy', $('input[name=manuy]:checked').val())
 
+        body = {
+          "firstName": $('#firstName').val(),
+          "lastName": $('#lastName').val(),
+          "email": $('#email').val(),
+          "url":$('#url').val(),
+          "phone": $('#phone').val(),
+          "manuy": $('input[name=manuy]:checked').val(),
+        }
+        data = model.objectKeys(body)
+        url = 'admin/new-Add'
       }
     }
     if (formID == 'newHouseForm') {
       if (model.checkSelect('#state') && model.checkClier(form) && model.inputEmail('#email') && model.inputTel('#phone')) {
-        fromData.append('firstName', $('#firstName').val())
-        fromData.append('lastName', $('#lastName').val())
-        fromData.append('email', $('#email').val())
-        fromData.append('phone', $('#phone').val())
-        fromData.append('hotel', $('#hotel').val())
-        fromData.append('state', $('#state').val())
-        fromData.append('city', $('#city').val())
-        fromData.append('guest', $('#guest').val())
-        fromData.append('address', $('#address').val())
-        fromData.append('textarea', $('#textarea').val())
-        fromData.append('plece', $('input[name=ple]:checked').val())
-        fromData.append('manuy', $('input[name=manuy]:checked').val())
-        login(fromData)
+        // fromData.append('firstName', $('#firstName').val())
+        // fromData.append('lastName', $('#lastName').val())
+        // fromData.append('email', $('#email').val())
+        // fromData.append('phone', $('#phone').val())
+        // fromData.append('hotel', $('#hotel').val())
+        // fromData.append('state', $('#state').val())
+        // fromData.append('city', $('#city').val())
+        // fromData.append('guest', $('#guest').val())
+        // fromData.append('address', $('#address').val())
+        // fromData.append('textarea', $('#textarea').val())
+        // fromData.append('plece', $('input[name=ple]:checked').val())
+        // fromData.append('manuy', $('input[name=manuy]:checked').val())
+        body = {
+          "firstName": $('#firstName').val(),
+          "lastName": $('#lastName').val(),
+          "hotel": $('#hotel').val(),
+          "lights": $('#lights').is(":checked"),
+          "airConditioner": $('#air-conditioner').is(":checked"),
+          "door": $('#door').is(":checked"),
+          "chabad": $('#chabad').is(":checked"),
+          "foodKosher": $('#foodKosher').is(":checked"),
+          "freezer": $('#freezer').is(":checked"),
+          "airuve": $('#airuve').is(":checked"),
+          "email": $('#email').val(),
+          "textarea": $('#textarea').val(),
+          "state": $('#state').val(),
+          "city": $('#city').val(),
+          "guest": $('#guest').val(),
+          "phone": $('#phone').val(),
+          "address": $('#address').val(),
+          "manuy": $('input[name=manuy]:checked').val(),
+          "plece": $('input[name=ple]:checked').val()
+
+        }
+        data = model.objectKeys(body)
+        url = 'admin/new-House'
+
       }
     }
-    // if (name != null) {
-    //   console.log(`http://localhost:3000/auth/${name}`)
-    //   const response = await fetch(`http://localhost:3000/auth/${name}`, {
-    //     // headers: {
-    //     //   'Content-Type': 'application/x-www-form-urlencoded'
-    //     // },
-    //     method: method,
-    //     body: fromData
+    if (url != null) {
+      response = await fetch(`http://localhost:3000/${url}`, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        method: method,
+        body: data,
+      });
+      // console.log(a)
+      console.log(`http://localhost:3000/${url}`)
 
-    //   });
-    //   // console.log(a)
-    //   // console.log(method)
+    }
 
-    // }
 
-    // return response, name
+    return response
   }
 
   // processFile(imageInput) {
@@ -383,13 +456,13 @@ export function init() {
 // //     return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
 // //   }).join('&');
 
-// //   const response = await fetch('http://localhost:3000/admin/add-new-post', {
-// //       headers: {
-// //         'Content-Type': 'application/x-www-form-urlencoded'
-// //       },
-// //       method: 'put',
-// //       body: searchParams
-// //     }
+// const response = await fetch('http://localhost:3000/admin/add-new-post', {
+//     headers: {
+//       'Content-Type': 'application/x-www-form-urlencoded'
+//     },
+//     method: 'put',
+//     body: searchParams
+//   }
 
 
 

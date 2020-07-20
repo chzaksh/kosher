@@ -1,5 +1,9 @@
 const express = require('express')
 const router = express.Router()
+const Contact = require('../schemas/ContactSchema')
+const Hotel = require('../schemas/HotelsSchema')
+const House = require('../schemas/HouseSchema')
+const Add = require('../schemas/AddSchema')
 
 const {
     MongoClient,
@@ -84,9 +88,9 @@ const hotels = [{
         city: "melbourne",
         chabad: "true",
         lights: "",
-        freezer:"true",
-        foodKosher:"true",
-        airuve:"",
+        freezer: "true",
+        foodKosher: "true",
+        airuve: "",
         air: "",
         door: "false",
         link: `https://www.booking.com/hotel/au/quest-east-st-kilda.he.html?aid=2038680&no_rooms=1&group_adults=2`
@@ -118,9 +122,9 @@ const hotels = [{
         city: "uman",
         chabad: "true",
         lights: "true",
-        freezer:"",
-        foodKosher:"",
-        airuve:"",
+        freezer: "",
+        foodKosher: "",
+        airuve: "",
         air: "true",
         door: "true",
         link: `https://www.booking.com/hotel/ua/palace-uman.he.html?aid=2038680&no_rooms=1&group_adults=2`
@@ -152,9 +156,9 @@ const hotels = [{
         city: "uman",
         chabad: "true",
         lights: "true",
-        freezer:"",
-        foodKosher:"true",
-        airuve:"",
+        freezer: "",
+        foodKosher: "true",
+        airuve: "",
         air: "true",
         door: "true",
         link: `https://www.booking.com/hotel/ua/one.he.html?aid=2038680&no_rooms=1&group_adults=2`
@@ -186,9 +190,9 @@ const hotels = [{
         city: "uman",
         chabad: "true",
         lights: "true",
-        freezer:"",
-        foodKosher:"true",
-        airuve:"",
+        freezer: "",
+        foodKosher: "true",
+        airuve: "",
         air: "true",
         door: "true",
         link: `https://www.booking.com/hotel/ua/ahuzat-ohalei-shalom.he.html?aid=2038680&no_rooms=1&group_adults=2`
@@ -298,8 +302,143 @@ function routerFunction(nav, db) {
 
             })()
         });
+    router.route('/new-Hotels')
+        .put((req, res) => {
+            debug(45555)
+            const data = {
+                hotel,
+                lights,
+                airConditioner,
+                door,
+                chabad,
+                foodKosher,
+                freezer,
+                airuve,
+                email,
+                phoneContent,
+                textarea,
+                state,
+                city,
+                guest,
+                phone,
+                url,
+                address,
+                plece
+            } = req.body;
+            (async () => {
+                debug(data)
+                try {
 
 
+                    const results = await Hotel.collection.insertOne(data)
+                    // if (results) {
+                    //     res.json(data)
+                    // }
+
+                } catch (err) {
+                    debug(err);
+                }
+
+            })();
+        });
+
+    router.route('/new-House')
+        .put((req, res) => {
+            debug(45555)
+            const data = {
+                firstName,
+                lastName,
+                hotel,
+                lights,
+                airConditioner,
+                door,
+                chabad,
+                foodKosher,
+                freezer,
+                airuve,
+                email,
+                phoneContent,
+                textarea,
+                state,
+                city,
+                guest,
+                phone,
+                url,
+                address,
+                plece,
+                manuy,
+                plece
+            } = req.body;
+            (async () => {
+                debug(data)
+                try {
+
+
+                    const results = await House.collection.insertOne(data)
+                    // if (results) {
+                    //     res.json(data)
+                    // }
+
+                } catch (err) {
+                    debug(err);
+                }
+
+            })();
+        });
+    router.route('/new-Add')
+        .put((req, res) => {
+            debug(45555)
+            const data = {
+                firstName,
+                lastName,
+                email,
+                phone,
+                url,
+                manuy,
+            } = req.body;
+            (async () => {
+                debug(data)
+                try {
+                    const results = await Add.collection.insertOne(data)
+                    // if (results) {
+                    //     res.json(data)
+                    // }
+
+                } catch (err) {
+                    debug(err);
+                }
+
+            })();
+        });
+
+
+    router.route('/contact-us')
+        .put((req, res) => {
+            const data = {
+                firstName,
+                lastName,
+                email,
+                phone,
+                textarea
+            } = req.body;
+            (async () => {
+                debug('contact')
+                try {
+                    const emailUser = {
+                        email
+                    }
+
+                    const results = await Contact.collection.insertOne(data)
+                    if (results) {
+                        res.json(data)
+                    }
+
+                } catch (err) {
+                    debug(err);
+                }
+
+            })();
+        });
 
     router.route('/:id')
         .get((req, res) => {

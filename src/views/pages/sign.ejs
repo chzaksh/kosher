@@ -342,6 +342,11 @@
                 <label for="phone">phone</label>
                 <input type="tel" class="form-control" id="phone" placeholder="phone">
             </div>
+            <div class="form-group col-md-6">
+                <label for="textarea">פרטים על הבית</label>
+                <textarea class="form-control" name="content" id="textarea">something you want to tell us...</textarea>
+
+            </div>
             <% }else if( formName === 'newHouseForm') { %>
             <div class="form-group col-md-6">
                 <label for="textarea">פרטים על הבית</label>
@@ -366,17 +371,13 @@
     </div>
     <% }%>
     <% if ( formName === 'advertisingForm'){ %>
-    <!-- <div class="form-group">
-            <div class="form-row">
-               
-            </div>
-        </div> -->
+    
     <div class="form-group ">
         <div class="form-row">
 
-            <div class="form-control-file">
+            <!-- <div class="form-control-file">
                 <input type="file" class="form-group" id="logo" required accept="image/*">
-            </div>
+            </div> -->
 
 
 
@@ -385,7 +386,7 @@
 
 
     <% }%>
-    <% if ( formName === 'newHotelsForm'){ %>
+    <% if ( formName === 'newHotelsForm' || formName === 'newHouseForm'){ %>
     <div class="form-row">
 
         <div class="form-check">
@@ -423,29 +424,21 @@
             <label for="" class="form-check-label"> עירוב</label>
         </div>
     </div>
-
-    <div class="form-row">
-        <div class="form-check col-md-12 ">
-
-            <label for="">something you want to tell us...</label>
-            <textarea class="form-control" name="content" id="textarea" placeholder=""></textarea>
-
-        </div>
-    </div>
-
-
     <%}%>
-               <% if ( formName === 'newHouseForm'){ %>
+    
+               <% if ( formName === 'newHouseForm' || formName === 'newHotelsForm'){ %>
     <div class="form-group">
         <div class="form-row">
 
             <div class="form-group">
-                <input type="radio" checked class=" form-group i-block" name="ple" value="villa">
-                <label for="">דירה</label>
-                <input type="radio" class=" form-group i-block" name="ple" value="appartment">
-                <label for="">וילה</label>
-                <h3 class="d-inline-block">:סוג הבית </h3>
+                <input type="radio" id="villa"checked class=" form-group i-block" name="ple" value="villa">
+                <label for="appartment">וילה</label>
+                <input id="appartment" type="radio" class=" form-group i-block" name="ple" value="appartment">
+                <label for="villa">דירה</label>
+                <h3   class="d-inline-block">:סוג הבית </h3>
             </div>
+            <%}%>
+            <% if ( formName === 'newHouseForm'){ %>
             <div class="form-group">
                 <!-- <input type="file" class="" id="file0"> -->
                 <h3 class="d-inline-block">:תמונה חיצונית של הבית </h3>
@@ -463,9 +456,11 @@
 
         </div>
     </div>
+   
+    <% }else if( formName === 'newHotelsForm') { %>
 
-
-
+    </div>
+    </div>
     <%}%>
             <% if (formName === 'signUpForm'){ %>
 
@@ -485,38 +480,38 @@
             <%}%>
         <% if (formName === 'signUpForm' || formName === 'signInForm'){ %>
             <div class="form-row">
-            <div class="form-group md-4">
-                <%}%>
+                <div class="form-group md-4">
+                    <%}%>
                 <% if (formName === 'signUpForm' || formName === 'signInForm'|| formName === 'newHotelsForm'){ %>
 
 
-                <label class="d-block">Email:</label>
-                <input id="email" class="form-control" type="email" name="email" placeholder="
+                    <label class="d-block">Email:</label>
+                    <input id="email" class="form-control" type="email" name="email" placeholder="
          <% if(formName==='newHotelsForm'){ %> 
             <%= 'Write an email address we can contact you' %>
             <% } %> " pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="אנא הזן כתובת מייל תקינה" required>
+                </div>
             </div>
-        </div>
-        <%}%>
+            <%}%>
         
   
         <% if (formName === 'signUpForm' || formName === 'signInForm'){ %>
-        <div class="mb-4">
-            <label class="d-block" for="password">Password:</label>
-            <input id="password" class="form-control" type="password" name="password"
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}"
-                title="הסיסמא חייב להכיל לפחות אות קטנה אחת, אות גדולה אחת ומספר אחד. 6-12 תווים" required />
-        </div>
-        <%}%>
+            <div class="mb-4">
+                <label class="d-block" for="password">Password:</label>
+                <input id="password" class="form-control" type="password" name="password"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}"
+                    title="הסיסמא חייב להכיל לפחות אות קטנה אחת, אות גדולה אחת ומספר אחד. 6-12 תווים" required />
+            </div>
+            <%}%>
         <% if (formName === 'newHouseForm' || formName === 'advertisingForm' ){ %>
 
 
-        <div class="card-deck mb-3 text-center">
+            <div class="card-deck mb-3 text-center">
 
-            <div class="card mb-4 shadow-sm">
+                <div class="card mb-4 shadow-sm">
 
-                <div class="card-header">
-                    <input type="radio" class="form-radio-input" name="manuy" value="<% if (formID === 'advertising'){ %>20<%} else{ %>0 <%}%>" id="free" checked>
+                    <div class="card-header">
+                        <input type="radio" class="form-radio-input" name="manuy" value="<% if (formID === 'advertising'){ %>20<%} else{ %>0 <%}%>" id="free" checked>
                 <h4 class="my-0 font-weight-normal"><% if (formID === 'advertising'){ %>
                     month<%} else{ %><%= Object.keys(price[0])[0]%> <%}%>
                 </h4>
@@ -524,51 +519,51 @@
                 <div class="card-body">
                     <h1 class="card-title pricing-card-title">
                      <%= price[0].Free%> <small class=" text-muted"></small>
-                    </h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li><%= price[0].text%> </li>
-                    </ul>
-                    <!-- <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button> -->
+                        </h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li><%= price[0].text%> </li>
+                        </ul>
+                        <!-- <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button> -->
+                    </div>
                 </div>
-            </div>
 
-            <div class="card mb-4 shadow-sm">
-                <div class="card-header">
-                    <input type="radio" class="form-radio-input" name="manuy" value="<% if (formID === 'advertising'){ %>50<%} else{ %>15 <%}%>" id="pro">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <input type="radio" class="form-radio-input" name="manuy" value="<% if (formID === 'advertising'){ %>50<%} else{ %>15 <%}%>" id="pro">
                 <h4 class="my-0 font-weight-normal"><% if (formID === 'advertising'){ %> six months<%} else{ %><%= Object.keys(price[1])[0]%><%}%></h4>
                 </div>
                 <div class="card-body">
                     <h1 class="card-title pricing-card-title"><%= price[1].Pro%><small class=" text-muted"></small>
-                    </h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li><%= price[1].text%></li>
+                        </h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li><%= price[1].text%></li>
 
-                    </ul>
-                    <!-- <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button> -->
+                        </ul>
+                        <!-- <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button> -->
+                    </div>
                 </div>
-            </div>
 
-            <div class="card mb-4 shadow-sm">
-                <div class="card-header">
-                    <input type="radio" class="form-radio-input" name="manuy" value="<% if (formID === 'advertising'){ %>90<%} else{ %>29 <%}%>" id="enterprise">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <input type="radio" class="form-radio-input" name="manuy" value="<% if (formID === 'advertising'){ %>90<%} else{ %>29 <%}%>" id="enterprise">
                 <h4 class="my-0 font-weight-normal"><% if (formID === 'advertising'){ %>year<%} else{ %><%= Object.keys(price[2])[0]%><%}%></h4>
                 </div>
                 <div class="card-body">
                     <h1 class="card-title pricing-card-title"><%= price[2].Enterprise%> <small
                         class=" text-muted"></small></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li><%= price[2].text%></li>
-                    </ul>
-                    <!-- <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button> -->
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li><%= price[2].text%></li>
+                        </ul>
+                        <!-- <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button> -->
+                    </div>
                 </div>
             </div>
-        </div>
-        <%}%>
+            <%}%>
             <input type="submit" class="btn btn-primary col-md-6" value="<%= submitValue %>">
-        </form>
-        <% if (formName === 'signUpForm'){ %>
-        <a href="/signin" class="mt-4 d-block">sign in</a>
-        <%}%>
+            </form>
+            <% if (formName === 'signUpForm'){ %>
+            <a href="/signin" class="mt-4 d-block">sign in</a>
+            <%}%>
 
     </div>
 </div>
