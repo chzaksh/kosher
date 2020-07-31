@@ -6,9 +6,13 @@ const debug = require('debug')('app:server')
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const port = 3000;
+const cors = require('cors')
 const mongoose = require('mongoose');
 const chalk = require('chalk');
 const p = require('body-parser');
+const bcrypt = require('bcrypt')
+
+
 
 // const bodyParser = require('body-parser')
 // const urlencodedParser = bodyParser.urlencoded({ extended: false })
@@ -55,8 +59,8 @@ app.use(session({
   secret: 'nm'
 }))
 require('./src/config/passport.js')(app)
-
-const authRouter = require('./src/routes/authRoutes')(db);
+app.use(cors())
+const authRouter = require('./src/routes/authRoutes')(db, nav);
 const adminRouter = require('./src/routes/adminRoutes')(nav, db, menuSign, zmanimMenu);
 const housePrivateRouter = require('./src/routes/housePrivateRoutes')(nav, db, menuSign, zmanimMenu);
 const homeRouter = require('./src/routes/homeRoutes')(nav, db, menuSign, zmanimMenu);

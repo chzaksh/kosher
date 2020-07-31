@@ -618,6 +618,7 @@ pre code {
     padding: 10px 0;
     font-size: 12px;
 }
+
 .error {
     border: 3px red solid;
 }
@@ -634,15 +635,15 @@ pre code {
 /* .card-hotel-margin{
     border-radius: 0 0 10px 10px;
 } */
- .bootstrap-select>.dropdown-toggle {
+.bootstrap-select>.dropdown-toggle {
     width: 85px;
 }
 
 .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
     width: 100px;
-} 
+}
 
-#albomPraivate{
+#albomPraivate {
     margin-right: -6.5rem;
     margin-left: 5.9rem;
 }
@@ -664,15 +665,20 @@ pre code {
     margin: 5px 0px;
     font-size: 10px;
 }
+
 #addBox img {
     padding: 10px;
 }
- #addBox a,  #addBox {
-     margin: 10px;
- }
- #addBox {
-     width: 100%;
- }
+
+#addBox a,
+#addBox {
+    margin: 10px;
+}
+
+#addBox {
+    width: 100%;
+}
+
 aside .container {
     padding-left: 0;
 }
@@ -2713,7 +2719,7 @@ textarea.form-control.is-invalid {
     user-select: none;
     background-color: transparent;
     border: .125rem solid transparent;
-    padding: .375rem .75rem;
+    padding: .25rem .35rem;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .5rem;
@@ -7153,12 +7159,15 @@ button.bg-dark:hover {
 .border-white {
     border-color: #fff !important
 }
-#advertising{
+
+#advertising {
     top: 380px;
 }
-#basic-url{
+
+#basic-url {
     border-radius: 0px .5rem .5rem 0px;
 }
+
 .rounded-sm {
     border-radius: .25rem !important
 }
@@ -8671,11 +8680,6 @@ button.bg-dark:hover {
 
 .p-5 {
     padding: 3rem !important
-}
-
-.pt-5,
-.py-5 {
-    /* padding-top: 3rem !important */
 }
 
 .pr-5,
@@ -10916,9 +10920,7 @@ a.text-dark:hover {
     }
 }
 
-.page-section {
-    /* padding: 6rem 0 */
-}
+
 
 .page-section .page-section-heading {
     font-size: 2.25rem;
@@ -11019,15 +11021,19 @@ h2 {
     padding: 15px;
 }
 
-aside{
+aside {
     width: 260px;
-    position: absolute;
-    left: 45px;
-    top: 530px;
+    /* position: absolute; */
+    margin-left: 45px;
+    /* margin-top: 530px; */
+    float: left;
     border: 1px black solid;
     padding: 15px 0;
     background-color: #79ae8b;
     border-radius: 5px;
+}
+.clear{
+    clear: both;
 }
 .editNewHome,
 .editNewHotel {
@@ -11312,11 +11318,6 @@ form .row:first-child .floating-label-form-group {
     height: 2rem
 }
 
-.portfolio {
-    /* padding-top: 6rem;
-    padding-bottom: 4.5rem */
-}
-
 .page-section-heading {
     display: inline-block
 }
@@ -11327,6 +11328,10 @@ form .row:first-child .floating-label-form-group {
 
 .pre-wrap {
     white-space: pre-wrap
+}
+#clearBTN{
+    margin-right: 193px;
+    margin-left: -118px;
 }
 
 .icon-contact {

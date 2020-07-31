@@ -21,8 +21,10 @@
         </div>
 
         <% if (menuSign){ %>
+            <% if (user == null){ %>
         <a id="bth_Log_in" class="btn btn-primary" href="/signin">התחבר</a>
         <a id="bth_registr" class="btn btn-primary" href="/signup">הרשמה</a>
+        <%}%>
         <%}%>
     </div>
          

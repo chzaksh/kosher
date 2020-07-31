@@ -54,20 +54,7 @@ function myAlert(x) {
     alert(x)
 }
 
-function welcome(first_name, role_id) {
-    inp.className -= ("flax");
-    inp.innerHTML = `<section class="container">  <h2>welcome, ${first_name}</h2></section>`;
-    if (role_id == 1) {
-        inp.innerHTML += `${viewus.admin}`;
-    } else if (role_id == 2) {
-        inp.innerHTML += `${viewus.manager}`;
-        console.log(2)
-    } else if (role_id == 3) {
-        inp.innerHTML += `${viewus.client}`;
-        console.log(viewus.client)
-        console.log(inp)
-    }
-}
+
 
 function crateTr(numLain, tables) { //ממלא נתונים בטבלה
  

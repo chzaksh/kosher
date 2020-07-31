@@ -86,21 +86,57 @@ function inputPassword(input) {
 }
 
 async function putDB(url, method, data) {
-  console.log(`http://localhost:3000/${url}`)
-  response = await fetch(`http://localhost:3000/${url}`, {
+  let resulte = null
+  const response = await fetch(`http://localhost:3000/${url}`, {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
     method: method,
     body: data,
   });
-  if (response.status == "OK" && response.affectedRows == 1) {
-    result = true
-    console.log(response, 132)
-    console.log(result)
+  if (response.statusText == "OK") {
+    resulte = response.json()
+  }
+  return resulte
 }
-  
+
+
+
+
+
+
+
+async function getOllUsers() { //מקבל את כל המשתמשים לטבלת המנהל
+  let resulte = null;
+  const response = await fetch(`http://localhost:3000/admin/getTable`, {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    method: 'post',
+  });
+  if (response.statusText == "OK") {
+    resulte = response.json()
+    console.log(resulte)
+  }
+  return resulte
+
 }
+async function deleteUser(email) { //מחיקת משתמש
+  var result = null;
+  var settings = {
+    "url": "https://123-61691b.appdrag.site/api/client/deleteUser",
+    "data": {
+      "email": email
+    },
+    "method": "POST",
+    "async": true,
+    "crossDomain": true,
+    "processData": true
+  }
+  result = await ajax.updateOrDelete(settings);
+  return result
+}
+
 
 
 
@@ -112,5 +148,6 @@ export {
   inputPassword,
   checkSelect,
   objectKeys,
-  putDB
+  putDB,
+  getOllUsers
 }

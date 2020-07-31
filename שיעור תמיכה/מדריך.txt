@@ -1,0 +1,11 @@
+העלאת קבצים -
+https://www.npmjs.com/package/express-fileupload
+
+מתקינים fileUpload
+
+
+
+HASH PASSWORD
+
+https://www.abeautifulsite.net/hashing-passwords-with-nodejs-and-bcrypt
+

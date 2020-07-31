@@ -19,25 +19,11 @@ export function init() {
 
 function beginning() {
     view.ineerLogin(); //מעלה את הטופס
-    aEL(); //קליק למספרים
+    
     userCheck(); // בדיקת טופס כניסה
 }
 
-// function after(user_role_id) {
 
-// }
-
-function aEL() { // נותן קליק למספרים בכניסה ללוגין
-    document.querySelectorAll('.numbers').forEach(btn => {
-        btn.addEventListener("click", start);
-    })
-}
-
-function rEL() { //מוריד קליק למספרים בכניסה ללוגין
-    document.querySelectorAll('.numbers').forEach(btn => {
-        btn.removeEventListener("click", start);
-    })
-}
 
 
 
@@ -136,20 +122,7 @@ function taimerMinute() { //נעילת הטופס לוגין לדקה אחרי 3
     }, 60000);
 }
 
-function admin1() { //אחראי על הצד השמאלי בעמוד של המנהל 
-    putUsersInTable(); //מקבל נתונים מהדטה בייס ושולח לטבלה בעמוד מנהל
-    clickRefresh(); //נותן קליק לכפתור רענון טבלה בעמוד המנהל
-}
 
-async function putUsersInTable() { //מקבל נתונים מהדטה בייס ושולח לטבלה בעמוד מנהל
-    let users = await model.getOllUsers(); // מקבל את כל המשתמשים 
-    let usersLen = users.length;
-    view.crateTr(usersLen, users); //שולח את המשתמשים לטבלה
-    deletUser(); // יוצר כפתור מחיקה בטבלת המשתמשים וגם מוחק
-    uppdeteUser(); // יוצר כפתור עדכון ומעדכן
-    document.getElementsByClassName("btn_changecode")[0].addEventListener("click", chengeCode); // נותן אפשרות להחליף קוד
-    view.numbers(); //מכניס מספרים ליד השמות
-}
 
 function deletUser() {
     $('.remove, .adminRemove').click(function (tr) {

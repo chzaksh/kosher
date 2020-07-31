@@ -24,7 +24,10 @@ export function init() {
 
   async function search(form, root) {
     //     console.log(root)
-    const country = $(form).find('#state').val();
+    const country = {
+      id: $(form).find('#state').val(),
+      name: $(form).find('#state option:selected').text()
+    }
     const city = $(form).find('#city').val();
     const hotel = $(form).find('#hotel').val();
     const lights = $(form).find('#lights').is(":checked")
@@ -41,6 +44,14 @@ export function init() {
 
   }
 
+  $('#home #clearBTN').on('click', function (e) {
+    location.href = '/home-page/'
+  })
+  $('#housePrivate #clearBTN').on('click', function (e) {
+    location.href = '/private-house/'
+  })
+
+
   $('#sercheprivate').on('submit', async function (e) {
     e.preventDefault();
     await search($(this), 'http://localhost:3000/private-house/search')
@@ -55,7 +66,8 @@ export function init() {
   async function getSearch(root, country, city, hotel, lights, air, door, freezer, chabad, foodKosher, airuve, star, rating) {
     const url = new URL(root);
     if (country) {
-      url.searchParams.append('country', country)
+      url.searchParams.append('countryID', country.id)
+      url.searchParams.append('countryName', country.name)
     }
     if (city) {
       url.searchParams.append('city', city)
@@ -97,8 +109,18 @@ export function init() {
 
   $("#signUpForm, #signInForm, #contact-us, #newHotelsForm, #advertising, #newHouseForm").on('submit', function (e) {
     e.preventDefault(); //מבטל מחיקה של הטופס
-    console.log(3333333333)
     const formID = this.id
+    //  if (formID == 'signInForm') {
+    //   method = 'post'
+    //   body = {
+    //     "email": $('#email').val(),
+    //     "password": $('#password').val(),
+    //   }
+    //   url = 'auth/sign-in'
+    //   ata = model.objectKeys(body)
+    // } else {
+    //   submit($(this), formID)
+    // }
 
 
     submit($(this), formID)
@@ -113,12 +135,16 @@ export function init() {
 
 
   async function submit(form, formID) { //שליחת טופס לוגין לבדיקה
-    let nameForm = await checkNameForm(form, formID)
+    const result = await checkNameForm(form, formID)
     model.error1() //מורקן את הודעת השגיאה
-    console.log(nameForm)
 
-    // if (nameForm) {
-    //   console.log(true)
+    // if (result.id == 1) {
+    // const url = new URL('http://localhost:3000/home-page');
+
+    // view.welcome(result.name, result.role_id); //שולח שם משתמש לחלק העליון של העמוד
+    //   console.log(4333333333)
+    //   admin1(); //פונקציות מנהל
+    //   // admin2();
     // } else {
     //   console.log(false)
     // }
@@ -127,7 +153,6 @@ export function init() {
 
 
   async function checkNameForm(form, formID) {
-    // const fromData = new FormData()
     let response = false
     let method = 'put'
     let data = null
@@ -137,9 +162,6 @@ export function init() {
     if (formID == 'signUpForm' || formID == 'signInForm') {
       if (model.checkClier(form) && model.inputEmail('#email') && model.inputPassword('#password')) {
         if (formID == 'signUpForm') {
-          // fromData.append('firstName', $('#firstName').val())
-          // fromData.append('email', $('#email').val())
-          // fromData.append('password', $('#password').val())
           body = {
             "userName": $('#userName').val(),
             "email": $('#email').val(),
@@ -148,9 +170,7 @@ export function init() {
           }
           url = 'auth/sign-up'
         } else {
-          // fromData.append('email', $('#email').val())
-          // fromData.append('password', $('#password').val())
-          method = 'post'
+          
           body = {
             "email": $('#email').val(),
             "password": $('#password').val(),
@@ -158,15 +178,11 @@ export function init() {
           url = 'auth/sign-in'
         }
         data = model.objectKeys(body)
+        method = 'post'
       }
     }
     if (formID === 'contact-us') { //להוסיף טקסט אקסטרה
       if (model.checkClier(form) && model.inputEmail('#email') && model.inputTel('#phone')) {
-        // fromData.append('firstName', $('#firstName').val())
-        // fromData.append('lastName', $('#lastName').val())
-        // fromData.append('email', $('#email').val())
-        // fromData.append('phone', $('#phone').val())
-        // fromData.append('textarea', $('#textarea').val())
         body = {
           "firstName": $('#firstName').val(),
           "lastName": $('#lastName').val(),
@@ -176,37 +192,10 @@ export function init() {
         }
         data = model.objectKeys(body)
         url = 'admin/contact-us'
-
-        // login(fromData)
-        // response = await fetch('http://localhost:3000/auth/contact-us', {
-        //   method: 'put',
-        //   body: fromData
-        // })
-        // if (response) {
-        //   console.log(response)
-        //   // view.ok()
-        // }
       }
     }
     if (formID == 'newHotelsForm') {
       if (model.inputEmail('#email') && model.checkClier($('#urlDiv'))) {
-        // fromData.append('hotel', $('#hotel').val())
-        // fromData.append('lights', $('#lights').is(":checked"))
-        // fromData.append('air-conditioner', $('#air-conditioner').is(":checked"))
-        // fromData.append('door', $('#door').is(":checked"))
-        // fromData.append('chabad', $('#chabad').is(":checked"))
-        // fromData.append('foodKosher', $('#foodKosher').is(":checked"))
-        // fromData.append('freezer', $('#freezer').is(":checked"))
-        // fromData.append('airuve', $('#airuve').is(":checked"))
-        // fromData.append('email', $('#email').val())
-        // fromData.append('phoneContent', $('#phoneContent').val())
-        // fromData.append('textarea', $('#textarea').val())
-        // fromData.append('state', $('#state').val())
-        // fromData.append('city', $('#city').val())
-        // fromData.append('guest', $('#guest').val())
-        // fromData.append('phone', $('#phone').val())
-        // fromData.append('url', $('#url').val())
-        // fromData.append('address', $('#address').val())
         body = {
           "hotel": $('#hotel').val(),
           "lights": $('#lights').is(":checked"),
@@ -234,18 +223,11 @@ export function init() {
     }
     if (formID == 'advertising') {
       if (model.checkClier(form) && model.inputEmail('#email') && model.inputTel('#phone')) {
-        // fromData.append('firstName', $('#firstName').val())
-        // fromData.append('lastName', $('#lastName').val())
-        // fromData.append('email', $('#email').val())
-        // fromData.append('phone', $('#phone').val())
-        // fromData.append('url', $('#url').val())
-        // fromData.append('manuy', $('input[name=manuy]:checked').val())
-
         body = {
           "firstName": $('#firstName').val(),
           "lastName": $('#lastName').val(),
           "email": $('#email').val(),
-          "url":$('#url').val(),
+          "url": $('#url').val(),
           "phone": $('#phone').val(),
           "manuy": $('input[name=manuy]:checked').val(),
         }
@@ -255,18 +237,6 @@ export function init() {
     }
     if (formID == 'newHouseForm') {
       if (model.checkSelect('#state') && model.checkClier(form) && model.inputEmail('#email') && model.inputTel('#phone')) {
-        // fromData.append('firstName', $('#firstName').val())
-        // fromData.append('lastName', $('#lastName').val())
-        // fromData.append('email', $('#email').val())
-        // fromData.append('phone', $('#phone').val())
-        // fromData.append('hotel', $('#hotel').val())
-        // fromData.append('state', $('#state').val())
-        // fromData.append('city', $('#city').val())
-        // fromData.append('guest', $('#guest').val())
-        // fromData.append('address', $('#address').val())
-        // fromData.append('textarea', $('#textarea').val())
-        // fromData.append('plece', $('input[name=ple]:checked').val())
-        // fromData.append('manuy', $('input[name=manuy]:checked').val())
         body = {
           "firstName": $('#firstName').val(),
           "lastName": $('#lastName').val(),
@@ -295,20 +265,26 @@ export function init() {
       }
     }
     if (url != null) {
-      response = await fetch(`http://localhost:3000/${url}`, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        method: method,
-        body: data,
-      });
-      // console.log(a)
-      console.log(`http://localhost:3000/${url}`)
-
+      response = await model.putDB(url, method, data)
+      console.log(url, method, data)
     }
-
-
     return response
+  }
+
+  function admin1() { //אחראי על הצד השמאלי בעמוד של המנהל 
+    putUsersInTable(); //מקבל נתונים מהדטה בייס ושולח לטבלה בעמוד מנהל
+    // clickRefresh(); //נותן קליק לכפתור רענון טבלה בעמוד המנהל
+  }
+
+  async function putUsersInTable() { //מקבל נתונים מהדטה בייס ושולח לטבלה בעמוד מנהל
+    let users = await model.getOllUsers(); // מקבל את כל המשתמשים 
+    console.log(users)
+    let usersLen = users.length;
+    view.crateTr(usersLen, users); //שולח את המשתמשים לטבלה
+    // deletUser(); // יוצר כפתור מחיקה בטבלת המשתמשים וגם מוחק
+    // uppdeteUser(); // יוצר כפתור עדכון ומעדכן
+    // document.getElementsByClassName("btn_changecode")[0].addEventListener("click", chengeCode); // נותן אפשרות להחליף קוד
+    // view.numbers(); //מכניס מספרים ליד השמות
   }
 
   // processFile(imageInput) {
@@ -332,69 +308,11 @@ export function init() {
   //   return file && acceptedImageTypes.includes(file['type'])
   // }
 
-  function login(formData) { //כניסה למערכת
-    var result = null;
-    var arr = [];
-    for (const input of formData.entries()) {
-      arr.push(input[1])
-      console.log(arr)
-    }
-
-    // var settings = {
-    //   "url": "https://123-61691b.appdrag.site/api/client/login",
-    //   "data": {
-    //     "firstName": arr[0],
-    //     "lastName":arr[1],
-    //     "emeil": arr[2],
-    //     "phone": arr[3],
-    //      "text": arr[4]
-    //     "AD_PageNbr": "1",
-    //     "AD_PageSize": "500"
-    //   },
-    //   "method": "POST",
-    //   "async": true,
-    //   "crossDomain": true,
-    //   "processData": true
-    // };
-    // return settings
-  }
 
 
 
 
 
-
-
-
-
-
-  function cheksInput(email, password) { //בדיקת אינפוט מייל, קוד
-
-    if (inputEmail(email) && inputPassword(password)) {
-      return true
-    }
-  }
-
-  async function user(x) { //בדיקה של טופס לוגין מול הדטה בייס
-    var result = await login(x); //שליחה לדטה בייס
-    if (result) { //תשובה חיובית
-      setTimeout(function () {
-        view.welcome(result.first_name, result.role_id); //שולח שם משתמש לחלק העליון של העמוד
-        if (result.role_id == 1) { //בדיקה אם נכנס מנהל
-          admin1(); //פונקציות מנהל
-          admin2();
-        } else {
-          client(result.token);
-        }
-      }, 1000)
-    } else { //תשובה שלילית 
-      view.playSound("no");
-      setTimeout(function () {
-        chckFalseCode(); //בדיקה כמה פעמים הקוד שגוי ופעולות בהתאמה
-      }, 500)
-
-    }
-  }
 
 
 

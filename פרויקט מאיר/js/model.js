@@ -1,4 +1,4 @@
-import * as ajax from "./modules/ajax.js";
+import * as ajax from "../../public/js/modules/ajax.js.js";
 var falseCode = 0;
 
 
@@ -10,19 +10,9 @@ var falseCode = 0;
 
 
 
-// function checkError(from) {//
-//     if ($(from).find('input').hasClass() == 'error') {
-//         return false
-//     }
-// }
 
-function getfalseCode() { // בדיקת נסינות החלפת קוד
-    falseCode++;
-    if (falseCode == 3) {
-        falseCode = 0;
-        return true;
-    }
-}
+
+
 
 async function checkOld(x) { //בדיקת קוד מנהל ישן
     var settings = {
@@ -42,38 +32,9 @@ async function checkOld(x) { //בדיקת קוד מנהל ישן
     return result
 }
 
-async function getOllUsers() { //מקבל את כל המשתמשים לטבלת המנהל
-    var result = null;
-    var settings = {
-        "url": "https://123-61691b.appdrag.site/api/client/getOllUsers",
-        "data": {
-            "AD_PageNbr": "1",
-            "AD_PageSize": "500"
-        },
-        "method": "POST",
-        "async": true,
-        "crossDomain": true,
-        "processData": true
-    };
-    result = await ajax.select(settings);
-    return result
-}
 
-async function deleteUser(email) { //מחיקת משתמש
-    var result = null;
-    var settings = {
-        "url": "https://123-61691b.appdrag.site/api/client/deleteUser",
-        "data": {
-            "email": email
-        },
-        "method": "POST",
-        "async": true,
-        "crossDomain": true,
-        "processData": true
-    }
-    result = await ajax.updateOrDelete(settings);
-    return result
-}
+
+
 
 async function putCodeIn(x) { //מכניס קוד מנהל חדש
     var result = null;

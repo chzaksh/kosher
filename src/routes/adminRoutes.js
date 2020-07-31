@@ -266,6 +266,19 @@ function routerFunction(nav, db) {
             })()
 
         })
+    router.route('/getTable')
+        .post((req, res) => {
+            (async () => {
+                try {
+                 const tableContact = await Contact.collection.find({}).toArray()
+                 debug(tableContact)
+                 res.json(tableContact)
+                } catch {
+
+                }
+            })()
+        })
+
 
     router.route('/add-private-house')
         .put((req, res) => {
@@ -414,6 +427,7 @@ function routerFunction(nav, db) {
 
     router.route('/contact-us')
         .put((req, res) => {
+
             const data = {
                 firstName,
                 lastName,
@@ -423,14 +437,15 @@ function routerFunction(nav, db) {
             } = req.body;
             (async () => {
                 debug('contact')
+
                 try {
-                    const emailUser = {
-                        email
-                    }
+                    // const emailUser = {
+                    //     email
+                    // }
 
                     const results = await Contact.collection.insertOne(data)
                     if (results) {
-                        res.json(data)
+                        res.json(results)
                     }
 
                 } catch (err) {

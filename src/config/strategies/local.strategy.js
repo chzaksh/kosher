@@ -8,9 +8,9 @@ const debug = require('debug')('app:local');
 function localStrategy() {
     passport.use(new Strategy(
         {
-            usernameField: 'username',
+            usernameField: 'email',
             passwordField: 'password',
-        }, (username, password, done) => {
+        }, (email, password, done) => {
             const url = 'mongodb://localhost:27017';
             const dbName = 'kosherWorld';
             (async () => {
@@ -20,7 +20,7 @@ function localStrategy() {
                     const db = client.db(dbName);
                     const col = db.collection('users');
 
-                    const user = await col.findOne({username});
+                    const user = await col.findOne({email});
 
                     // const user = await User.collection.findOne({username})
                     if (user.password === password) {

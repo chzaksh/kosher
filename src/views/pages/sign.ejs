@@ -371,7 +371,7 @@
     </div>
     <% }%>
     <% if ( formName === 'advertisingForm'){ %>
-    
+
     <div class="form-group ">
         <div class="form-row">
 
@@ -431,11 +431,11 @@
         <div class="form-row">
 
             <div class="form-group">
-                <input type="radio" id="villa"checked class=" form-group i-block" name="ple" value="villa">
+                <input type="radio" id="villa" checked class=" form-group i-block" name="ple" value="villa">
                 <label for="appartment">וילה</label>
                 <input id="appartment" type="radio" class=" form-group i-block" name="ple" value="appartment">
                 <label for="villa">דירה</label>
-                <h3   class="d-inline-block">:סוג הבית </h3>
+                <h3 class="d-inline-block">:סוג הבית </h3>
             </div>
             <%}%>
             <% if ( formName === 'newHouseForm'){ %>
@@ -456,7 +456,7 @@
 
         </div>
     </div>
-   
+
     <% }else if( formName === 'newHotelsForm') { %>
 
     </div>
@@ -502,6 +502,9 @@
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}"
                     title="הסיסמא חייב להכיל לפחות אות קטנה אחת, אות גדולה אחת ומספר אחד. 6-12 תווים" required />
             </div>
+            <%}%>
+            <% if (formName === 'signInForm'){ %>
+                <a href="/aoth/forget">שכחת סיסמה?</a>
             <%}%>
         <% if (formName === 'newHouseForm' || formName === 'advertisingForm' ){ %>
 
@@ -564,7 +567,7 @@
             <% if (formName === 'signUpForm'){ %>
             <a href="/signin" class="mt-4 d-block">sign in</a>
             <%}%>
-
+            
     </div>
 </div>
 </section>

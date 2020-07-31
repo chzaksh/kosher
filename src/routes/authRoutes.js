@@ -1,5 +1,5 @@
 const express = require('express');
-
+const bcrypt = require('bcrypt')
 const {
     MongoClient
 } = require('mongodb');
@@ -12,12 +12,13 @@ const {
 } = require('body-parser');
 const authRouter = express.Router();
 // app.use(json)
+const menuSign = false
+const zmanimMenu = false
+const zman = null
 
-
-
-function router(db) {
+function router(db, nav) {
     authRouter.route('/sign-up')
-        .put((req, res) => {
+        .post((req, res) => {
             const user = {
                 userName,
                 id_3,
@@ -27,19 +28,46 @@ function router(db) {
 
             (async () => {
                 try {
+
+
                     const emailUser = {
                         email
                     }
                     const dontEmail = await User.collection.findOne(emailUser)
+
                     if (!dontEmail) {
+                        const hashedPassport = await bcrypt.hash(req.body.password, 10)
+                        debug(hashedPassport);
+                        user.password = hashedPassport
+                        user.data = new Date().toString()
+                        // })
+                        debug(user);
                         const results = await User.collection.insertOne(user)
-                        if (results) {
-                            res.json({user:user.userName,email:user.email})
-                            // req.login(results.ops[0], () => {
-                            //     res.redirect('/auth/profile')
-                            // })
-                        }
+
+                        req.login(results.ops[0], () => {
+                            res.redirect('/')
+                        })
+
+                        // if (results) {
+                        //     res.json({
+                        //         user: user.userName,
+                        //         email: user.email
+                        //     })
+
                     }
+
+
+
+
+
+                    // if (results) {
+                    //     res.json({
+                    //         user: user.userName,
+                    //         email: user.email
+                    //     })
+
+                    // }
+                    // }
 
                 } catch (err) {
                     debug(err);
@@ -48,35 +76,45 @@ function router(db) {
             })();
         });
 
-    authRouter.route('/sign-in')
+    // authRouter.route('/sign-in')
 
-        .post((req, res) => {
-            const user ={
-                email,
-                password
-            } = req.body;
-            (async () => {
-                try {
-                    
-                    const results = await User.collection.findOne(user)
-                    debug(results)
-                     if (results){
-                         res.json(true)
-                     }
+    //     .post((req, res) => {
+    //         const user = {
+    //             email,
+    //             password
+    //         } = req.body;
+    //         (async () => {
+    //             try {
 
-                    // const results = await User.collection.insertOne(user)
-                    // req.login(results.ops[0], () => {
-                    //     res.redirect('/auth/profile')
-                    // })
-                } catch (err) {
-                    debug(err);
-                }
-                // client.close()
-            })();
-        });
+    //                 const results = await User.collection.findOne(user)
+
+    //                 // const results = await User.collection.insertOne(user)
+    //                 // req.login(results.ops[0], () => {
+    //                 //     res.redirect('/auth/profile')
+    //                 // })
+    //                  debug(results)
+    //                 if (results.id_3 == 1) {
+    //                         res.json({
+    //                         id: results.id_3,
+    //                         name: results.userName
+    //                     })
+
+    //                 } else {
+    //                     res.json({
+    //                         id: results.id_3,
+    //                         email: results.email,
+    //                         name: results.userName
+    //                     })
+    //                 }
+    //             } catch (err) {
+    //                 debug(err);
+    //             }
+    //             // client.close()
+    //         })();
+    //     });
 
 
-   
+
 
 
     authRouter.route('/profile')
@@ -85,7 +123,7 @@ function router(db) {
                 debug('authorized')
                 next();
             } else {
-                res.redirect('/');
+                res.redirect('/sign-in');
             }
         })
         .get((req, res) => {

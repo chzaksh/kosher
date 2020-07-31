@@ -3,7 +3,6 @@
 <body id="home">
     <%- include('../partials/nav');%>
     <%- include('../partials/header') %>
-    <%- include('../partials/aside') %>
 
 
 
@@ -17,7 +16,7 @@
                 <div class="form-group col-md-6">
                     <label for="state">State</label>
                     <select id="state" class="form-control " data-live-search="true" data-flag="true">
-                        <option value="">Choose...</option>
+                        <option value="<%= countryId %>"><%= countryName%></option>
                         <option value="AF">Afghanistan</option>
                         <option value="AX"><img>Åland Islands</option>
                         <option value="AL"><img>Albania</option>
@@ -271,11 +270,11 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label for="city">City</label>
-                    <input type="text" class="form-control" id="city">
+                    <input type="text" class="form-control" id="city" value="<%= city%>">
                 </div>
             </div>
             <div class="form-group">
-                <input id="hotel" type="search" name="" value="" class=" form-control"
+                <input id="hotel" type="search" name="" class=" form-control" value="<%= hotel%>"
                     placeholder="search here your house" id="title">
             </div>
             <div class="form-row">
@@ -316,27 +315,28 @@
                 </div>
                 <div class="form-group">
                     <select id="star" class="selectpicker">
-                        <option value="" data-content=" <i class='fas fa-star'><% if (star){ %>
-                            <%= star%> <% } %>star</i>"> </option>
-
-                        <option value="2" data-content="<i class='fas fa-star'>2</i>"></option>
-                        <option value="3" data-content="<i class='fas fa-star'>3</i>"></option>
-                        <option value="4" data-content="<i class='fas fa-star'>4</i>"></option>
-                        <option value="5" data-content="<i class='fas fa-star'>5</i>"></option>
+                        <% if(!star){%>
+                        <option value="" data-content="<i class='fas fa-star'>star</i>"> </option><%}%>
+                        <%for(let i=1; i < 6; i++){%>
+                        <option <% if(i == star ){%>selected <%}%> value="<%=i%>"
+                            data-content="<i class='fas fa-star'><%=i%></i>"></option>
+                        <%}%>
+                        
                     </select>
                 </div>
                 <div class="form-group">
                     <select class="selectpicker" id="rating">
-                        <option value="">rating</option>
-                        <option value="6" data-content="<i class='fas fa-heart'>6+</i>"></option>
-                        <option value='7' data-content="<i class='far fa-heart'>7+</i>"></option>
-                        <option value='8' data-content="<i class='far fa-heart'>8+</i>"></option>
-                        <option value='9' data-content="<i class='far fa-heart'>9+</i>"></option>
+                        <% if(!rating){%>
+                        <option value="" data-content="<i class='fas fa-heart'>rating</i>"> </option><%}%>
+                            <%for(let i=6; i < 10; i++){%>
+                        <option <% if(i == rating ){%>selected <%}%> value="<%=i%>"
+                            data-content="<i class='fas fa-heart'><%=i%>+</i>"></option>
+                        <%}%>
                     </select>
                 </div>
-
+                           
             </div>
-
+ <div id="clearBTN" class="btn btn-primary">נקה חיפוש</div>
             <input type="submit" class="btn btn-primary col-md-6" value="submit">
 
         </form>
@@ -358,57 +358,66 @@ Anything inside will go away once widget is loaded. -->
     p.parentNode.insertBefore(s, p);
 })(document, 'script', '//aff.bstatic.com/static/affiliate_base/js/flexiproduct.js');
 </script> -->
-<!-- <section class="page-section portfolio bg-primary text-white mb-0">
-    <div class="container text-center"> -->
+    <!-- <section class="page-section portfolio bg-primary text-white mb-0">-->
+    <section class="page-section portfolio bg-primary text-white mb-0"></section>
+    <div class="container text-center">
         <h3 class="container text-center">
-            נמצאו  <span><%= content.length%></span> תוצאות 
-        </h3>
-    <!-- </div>
-</section> -->
+            נמצאו <span><%= content.length%></span> תוצאות
+                        </h3>
 
-    <section class="page-section portfolio bg-primary text-white mb-0">
-        <div class="album py-5 ">
-            <div class="container">
-                <div class="row d-flex justify-content-center">
-                    <%for (let i in content){%>
-                    <div id="aaa" class="col-md-8 rounded">
-                        <div>
-                            <figure class="col-md-5 float-right ">
-                                <img class="rounded" src="<%=content[i].img[0].link%>" alt="<%=content[i].img[0].title%>" width=" 100%" height="100%" alt="">
-                            </figure>
-                            <div>
-                                <h2 class=""><%=content[i].title%><span><br>
-                                        <h5 class="float-right d-block mr-5"><%=content[i].text %></h5>
-                                        <h5 class="float-laft"><%=content[i].city%></h5>
-                                    </span></h2>
+                </div> <%- include('../partials/aside') %>
 
-                                <h7>guest: 
-                                    <% if(content[i].guest > 2) { %>
-                                        <i class="fas fa-male"></i><i class="fas fa-male"></i>  -  <i class="fas fa-male"></i> x <%=content[i].guest%>
-                                    <%}%>
+                <!--</section> -->
+
+
+                <div class="album py-5 ">
+                    <div class="container">
+                        <div class="row d-flex justify-content-center">
+                            <%for (let i in content){%>
+                            <div id="aaa" class="col-md-8 rounded">
+                                <div>
+                                    <figure class="col-md-5 float-right ">
+                                        <img class="rounded" src="<%=content[i].img[0].link%>"
+                                            alt="<%=content[i].img[0].title%>" width=" 100%" height="100%" alt="">
+                                    </figure>
+                                    <div>
+                                        <h2 class=""><%=content[i].title%><span><br>
+                                                <h5 class="float-right d-block mr-5"><%=content[i].text %></h5>
+                                                <h5 class="float-laft"><%=content[i].city%></h5>
+                                            </span></h2>
+
+                                        <h7>guest:
+                                            <% if(content[i].guest > 2) { %>
+                                            <i class="fas fa-male"></i><i class="fas fa-male"></i> - <i
+                                                class="fas fa-male"></i> x
+                                            <%=content[i].guest%>
+                                            <%}%>
                                     <% if(content[i].guest == 2) { %>
-                                        <i class="fas fa-male"></i><i class="fas fa-male"></i>
-                                        <%}%>
+                                            <i class="fas fa-male"></i><i class="fas fa-male"></i>
+                                            <%}%>
                                 </h7>
                                 
                                 <h7>Customer Rating:
                                     <% for (let x = 0; x < content[i].star; x++){ %>
-                                    <i class="fas fa-star"></i>
-                                    <% }%>
-                                </h7>
+                                            <i class="fas fa-star"></i>
+                                            <% }%>
+                                        </h7>
 
-                                <div> <a class="btn btn-primary " href="/home-page/<%= content[i]._id%>">תגובות</a>
-                                    <a class="btn btn-primary " href="<%= content[i].link%>" target="_blank">עבור לעמוד</a>
-                                   
+                                        <div> <a class="btn btn-primary "
+                                                href="/home-page/<%= content[i]._id%>">תגובות</a>
+                                            <a class="btn btn-primary " href="<%= content[i].link%>"
+                                                target="_blank">עבור לעמוד</a>
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <%}%> 
+                            <%}%> 
                 </div>
                
             </div>
         </div>
+        <div class="clear"></div> 
     </section>
 
 

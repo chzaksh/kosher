@@ -35,6 +35,10 @@ function routerFunction(nav, db, menuSign, zmanimMenu) {
                     res.render('pages/housePrivate', {
                         title: 'Private House',
                         content: privatehouse,
+                        countryName: '',
+                        countryId: '',
+                        hotel: '',
+                        city: '',
                         addsList,
                         door: false,
                         air: false,
@@ -61,6 +65,10 @@ function routerFunction(nav, db, menuSign, zmanimMenu) {
         .get((req, res) => {
 
             (async () => {
+                let countryName
+                let countryId
+                let hotel
+                let city
                 let air
                 let door
                 let lights
@@ -72,14 +80,19 @@ function routerFunction(nav, db, menuSign, zmanimMenu) {
                 let foodKosher;
                 let airuve;
                 let query = {};
-                if (req.query.country) {
-                    query.country = req.query.country.toLowerCase();
+                if (req.query.countryID) {
+                    query.countryId = req.query.countryID.toLowerCase()
+                    countryName = req.query.countryName
+                    countryId = req.query.countryID
+
                 }
                 if (req.query.city) {
                     query.city = req.query.city.toLowerCase();
+                    city = req.query.city
                 }
                 if (req.query.hotel) {
                     query.hotel = req.query.hotel.toLowerCase();
+                    hotel = req.query.hotel
                 }
                 if (req.query.lights) {
                     query.lights = req.query.lights;
@@ -112,9 +125,11 @@ function routerFunction(nav, db, menuSign, zmanimMenu) {
                 }
                 if (req.query.star) {
                     query.star = req.query.star;
+                    star = req.query.star
                 }
                 if (req.query.rating) {
                     query.rating = req.query.rating;
+                    rating = req.query.rating
                 }
                 try {
                     debug(query)
@@ -129,6 +144,10 @@ function routerFunction(nav, db, menuSign, zmanimMenu) {
                     res.render('pages/housePrivate', {
                         title: 'Private House',
                         content: privatehouse,
+                        countryId,
+                        countryName,
+                        hotel,
+                        city,
                         door,
                         air,
                         addsList,
