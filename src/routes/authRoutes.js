@@ -28,8 +28,6 @@ function router(db, nav) {
 
             (async () => {
                 try {
-
-
                     const emailUser = {
                         email
                     }
@@ -37,37 +35,12 @@ function router(db, nav) {
 
                     if (!dontEmail) {
                         const hashedPassport = await bcrypt.hash(req.body.password, 10)
-                        debug(hashedPassport);
                         user.password = hashedPassport
-                        user.data = new Date().toString()
-                        // })
-                        debug(user);
+                        user.date = new Date().toString()
                         const results = await User.collection.insertOne(user)
-
-                        req.login(results.ops[0], () => {
-                            res.redirect('/')
-                        })
-
-                        // if (results) {
-                        //     res.json({
-                        //         user: user.userName,
-                        //         email: user.email
-                        //     })
+                        res.redirect('http://localhost:3000/signin')
 
                     }
-
-
-
-
-
-                    // if (results) {
-                    //     res.json({
-                    //         user: user.userName,
-                    //         email: user.email
-                    //     })
-
-                    // }
-                    // }
 
                 } catch (err) {
                     debug(err);
@@ -117,21 +90,21 @@ function router(db, nav) {
 
 
 
-    authRouter.route('/profile')
-        .all((req, res, next) => {
-            if (req.user) {
-                debug('authorized')
-                next();
-            } else {
-                res.redirect('/sign-in');
-            }
-        })
-        .get((req, res) => {
-            res.json(req.user)
-        });
+    // authRouter.route('/profile')
+    //     .all((req, res, next) => {
+    //         if (req.user) {
+    //             debug('authorized')
+    //             next();
+    //         } else {
+    //             res.redirect('/');
+    //         }
+    //     })
+    //     .get((req, res) => {
+    //         res.json(req.user)
+    //     });
 
     authRouter.route('/sign-in').post(passport.authenticate('local', {
-        successRedirect: '/auth/profile',
+        successRedirect: '/home-page',
         failureRedirect: '/'
     }))
     return authRouter;

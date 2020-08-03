@@ -19,7 +19,6 @@ function localStrategy() {
                     client = await MongoClient.connect(url);
                     const db = client.db(dbName);
                     const col = db.collection('users');
-
                     const user = await col.findOne({email});
 
                     // const user = await User.collection.findOne({username})

@@ -94,10 +94,10 @@ async function putDB(url, method, data) {
     method: method,
     body: data,
   });
-  if (response.statusText == "OK") {
-    resulte = response.json()
-  }
-  return resulte
+  // if (response.statusText == "OK") {
+  //   resulte = response.json()
+  // }
+  // return resulte
 }
 
 

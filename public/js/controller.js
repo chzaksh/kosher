@@ -137,7 +137,7 @@ export function init() {
   async function submit(form, formID) { //שליחת טופס לוגין לבדיקה
     const result = await checkNameForm(form, formID)
     model.error1() //מורקן את הודעת השגיאה
-
+    // console.log(result)
     // if (result.id == 1) {
     // const url = new URL('http://localhost:3000/home-page');
 
@@ -170,7 +170,7 @@ export function init() {
           }
           url = 'auth/sign-up'
         } else {
-          
+
           body = {
             "email": $('#email').val(),
             "password": $('#password').val(),

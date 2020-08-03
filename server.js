@@ -111,6 +111,7 @@ app.get('/signup', (req, res) => {
 });
 
 app.get('/signin', (req, res) => {
+  debug('sign-in')
   res.render('pages/sign', {
     formID: 'signInForm',
     pageTitle: 'Sign in',
@@ -120,7 +121,6 @@ app.get('/signin', (req, res) => {
     nav,
     menuSign: false,
     zmanimMenu: false
-
   });
 });
 
@@ -131,7 +131,16 @@ app.get('/newHouse', (req, res) => {
     formName: 'newHouseForm',
     formAction: '/admin/new-House',
     submitValue: 'submit',
-    price: [{Free: '$0', text: 'חודש נסיון מתנה'}, {'Pro': '$15', 'text': 'פרסום חצי שנה'}, {'Enterprise': '$29', 'text': 'פרסום שנה שלימה'}],
+    price: [{
+      Free: '$0',
+      text: 'חודש נסיון מתנה'
+    }, {
+      'Pro': '$15',
+      'text': 'פרסום חצי שנה'
+    }, {
+      'Enterprise': '$29',
+      'text': 'פרסום שנה שלימה'
+    }],
     nav,
     menuSign: true,
     zmanimMenu: false
@@ -171,7 +180,16 @@ app.get('/newAdvertising', (req, res) => {
     formName: 'advertisingForm',
     formAction: '/admin/newAdvertising',
     submitValue: 'submit',
-    price: [{'Free': '$20', 'text': 'חודש אחד'}, {'Pro': '$50', 'text':` פרסום 6 חודשים `}, {'Enterprise': '$90', 'text': 'פרסום 12 חודשים'}],
+    price: [{
+      'Free': '$20',
+      'text': 'חודש אחד'
+    }, {
+      'Pro': '$50',
+      'text': ` פרסום 6 חודשים `
+    }, {
+      'Enterprise': '$90',
+      'text': 'פרסום 12 חודשים'
+    }],
     nav,
     menuSign: true,
     zmanimMenu: false
