@@ -38,7 +38,7 @@ function router(db, nav) {
                         user.password = hashedPassport
                         user.date = new Date().toString()
                         const results = await User.collection.insertOne(user)
-                        res.redirect('http://localhost:3000/signin')
+                        res.redirect('/home-page')
 
                     }
 
